@@ -14399,8 +14399,8 @@ header .booktable a:hover {
   display: block;
   outline: none;
   position: absolute;
-  top: 28%;
-  left: 28%;
+  top: 47%;
+  left: 23%;
   width: auto;
   border: 2px solid #cfa86e;
   border-radius: 0;
@@ -17535,3 +17535,7 @@ footer .col-lg-4 span {
     width: 6%;
   }
 }/*# sourceMappingURL=style.css.map */
+
+.shop-detail .product-detail {
+    padding: 0px;
+}

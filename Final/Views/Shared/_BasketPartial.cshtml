@@ -20,7 +20,7 @@
     <h6>Subtotal: <span>@subtotal₼</span></h6>
     <div class="aboutcart">
         <a asp-action="index" asp-controller="Basket" >View Cart</a>
-        <a href="checkout.html" class="checkout">Proceed to Checkout</a>
+        <a asp-controller="Order" asp-action="Create" class="checkout">Proceed to Checkout</a>
     </div>
 </div>
 

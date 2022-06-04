@@ -187,3 +187,13 @@ C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Share
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BasketIndexPartial.cshtml.g.cs
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Basket\Index.cshtml.g.cs
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_RegisterFormPartial.cshtml.g.cs
+C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationFormScriptPartial.cshtml.g.cs
+C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginFormPartial.cshtml.g.cs
+C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Account\Profile.cshtml.g.cs
+C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProfileFormPartial.cshtml.g.cs
+C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Order\Create.cshtml.g.cs
+C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_OrderPartial.cshtml.g.cs
+C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Detail.cshtml.g.cs
+C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shop\Detail.cshtml.g.cs

@@ -20,6 +20,10 @@ namespace Final.Models
         public Nullable<int> CategoryId { get; set; }
         public IEnumerable<ProductTag> ProductTags { get; set; }
         public Category Category { get; set; }
+        public IEnumerable<Basket> Baskets { get; set; }
+        public IEnumerable<OrderItem> OrderItems { get; set; }
+        [NotMapped]
+        public List<int> Counts { get; set; } = new List<int>();
         [NotMapped]
         public IFormFile ImageFile { get; set; }
         [NotMapped]

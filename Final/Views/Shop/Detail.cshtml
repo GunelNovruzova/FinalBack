@@ -1,0 +1,140 @@
+﻿@model ProductVM
+@{
+    ViewData["Title"] = "Detail";
+    string tags = "";
+}
+
+
+
+<section class="shop">
+    <div class="shop-text">
+        <h1>Shop</h1>
+        <a href="">Home </a>
+        <i class="fa-solid fa-angle-right"></i>
+        <span>Products</span>
+    </div>
+</section>
+<section class="product-detail" style="margin:0px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <div class="image">
+                    <img src="assets/img/meals/@Model.Product.Image" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 col-12">
+                <h2>@Model.Product.Name</h2>
+                <p>@Model.Product.Description</p>
+                <span>@Model.Product.Price ₼</span>
+                <div class="amountcart">
+                    <div class="productamount">
+                        <a href=""><i class="fa-solid fa-minus"></i></a>
+                        <span>1</span>
+                        <a href=""><i class="fa-solid fa-plus"></i></a>
+                    </div>
+                    <a asp-controller="Product" asp-action="AddBasket" asp-route-id="@Model.Product.Id" class="addtocart" style="position: static; opacity: 1; visibility: visible;">Add to cart</a>
+                </div>
+                <h4>Category:<span>@Model.Product.Category.Name</span></h4>
+                <h4>Tag:<span>
+                    @(tags = string.Join(", ", Model.Product.ProductTags.Select(p => p.Tag != null ? p.Tag.Name : "")))
+                </span></h4>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="allreviews">
+    <div class="product-info-tab-menu">
+        <div class="tab">
+            <button class="tablinks active"
+                    onclick="openInfo(event, 'Description')"
+                    id="defaultOpen">
+                Description
+            </button>
+            <button class="tablinks" onclick="openInfo(event, 'Adittional')">Reviews</button>
+
+        </div>
+
+        <div id="Description" class="tabcontent ">
+            <h4>Description</h4>
+            <p>@Model.Product.Description</p>
+        </div>
+
+        <div id="Adittional" class="tabcontent">
+            <div class="reviewtable">
+                <p>1 review for @Model.Product.Name</p>
+                <div class="reviewtext">
+
+                    <p>Themechampion – <span>April 13, 2022</span></p>
+                    <h5>Delicious</h5>
+                </div>
+                <h3>Add a Review</h3>
+                <form action="">
+                    <label for="Name">Name</label>
+                    <br>
+                    <input type="text">
+                    <br>
+                    <label for="Email">Email</label>
+                    <br>
+                    <input type="text">
+                    <br>
+                    <label for="Name">Your Review</label>
+                    <br>
+                    <input type="text">
+                    <br>
+                    <button type="submit">Sumbit</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section class="related">
+    <h3>Related Products</h3>
+    <div class="container">
+        <div class="row">
+            @foreach (Product product in Model.Products)
+            {
+
+                <div class="col-lg-4">
+                    <div class="product-related">
+                        <div class="imgcart">
+                            <a href="shopdetail.html"><img src="~/assets/img/meals/@product.Image" alt=""></a>
+                            <a href="" class="addtocart">Add to cart</a>
+                        </div>
+                    </div>
+                    <div class="product-text">
+                        <h4>@product.Name</h4>
+                        <span>@product.Price₼</span>
+                    </div>
+                </div>
+            }
+
+            @*<div class="col-lg-4">
+            <div class="product-related">
+                <div class="imgcart">
+                    <a href="shopdetail.html"><img src="assets/img/meals/doubleburger.jpg" alt=""></a>
+                    <a href="" class="addtocart">Add to cart</a>
+                </div>
+            </div>
+            <div class="product-text">
+                <h4>Prive Double Burger</h4>
+                <span>21₼</span>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="product-related">
+                <div class="imgcart">
+                    <a href="shopdetail.html"><img src="assets/img/meals/lokumburger.jpg" alt=""></a>
+                    <a href="" class="addtocart">Add to cart</a>
+                </div>
+            </div>
+            <div class="product-text">
+                <h4>Lokum Burger</h4>
+                <span>21₼</span>
+            </div>
+        </div>*@
+        </div>
+    </div>
+</section>

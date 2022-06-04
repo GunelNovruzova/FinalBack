@@ -18,12 +18,17 @@
             <div class="col-lg-8 col-12">
                 <div class="features">
                     <p>Showing <span>1–4</span> Of <span>11</span> Results</p>
-                    <form action="">
-                        <select name="" id="">
+
+
+
+
+                    <form id="shopFilter" name="shopFilter">
+                        <select id="shopFilter" name="sortby" onchange="form.submit()">
                             <option value="">Sort by Relevance</option>
-                            <option value="">Name (A-Z)</option>
-                            <option value="">Name (Z-A)</option>
-                            <option value="">Price (Low > High)</option>
+                            <option value="AZ">Name (A-Z)</option>
+                            <option value="ZA">Name (Z-A)</option>
+                            <option value="LH">Price (Low > High)</option>
+                            <option value="HL">Price (High> Low)</option>
                         </select>
                     </form>
                 </div>
@@ -33,7 +38,7 @@
                         <div class="col-lg-6 col-12">
                             <div class="product-detail">
                                 <div class="imgcart">
-                                    <a href="shopdetail.html"><img src="~/assets/img/meals/@product.Image" alt=""></a>
+                                    <a asp-action="detail" asp-controller="shop" asp-route-pid="@product.Id"><img src="~/assets/img/meals/@product.Image" alt=""></a>
                                     <a asp-controller="Product" asp-action="AddBasket" asp-route-id="@product.Id" class="addtocart">Add to cart</a>
                                 </div>
                             </div>
@@ -47,34 +52,47 @@
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
                             </div>
-
-
-
-
-
-                        </div>
-                       
-                     
-                       
-                    }
+                       </div>
+                      }
                 </div>
                 <div class="blog-pagination">
                     <ul class="justify-content-center">
                         @if (ViewBag.PageIndex > 1)
                         {
-                            <li><a class="Previous" asp-action="Index" asp-route-page="@(ViewBag.PageIndex-1)"><i class="ion-ios-arrow-left"></i></a></li>
+                    <li class="page-item">
+                        <a class="page-link" asp-action="index" asp-route-page="1" aria-label="Previous">
+                            @("<<")
+                        </a>
+                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-1)" aria-label="Previous">
+                                            @("<")
+                                        </a>
+                                    </li>
+                                                    @if (ViewBag.PageIndex == ViewBag.PageCount && ViewBag.PageIndex > 2)
+                                                    {
+                                    <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-2)">@(ViewBag.PageIndex-2)</a></li>}
+                                                                    <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-1)">@(ViewBag.PageIndex-1)</a></li>}
 
-
-                            <li><a asp-action="Index" asp-route-page="@(ViewBag.PageIndex-1)">@(ViewBag.PageIndex-1)</a></li>
-                        }
-                        <li class="active"><a asp-action="index" asp-route-page="@ViewBag.PageIndex">@ViewBag.PageIndex</a></li>
+                        <li class="page-item"><a class="page-link" style="background: #030E16; color: white;" asp-action="index" asp-route-page="@ViewBag.PageIndex">@ViewBag.PageIndex</a></li>
 
                         @if (ViewBag.PageIndex < ViewBag.PageCount)
                         {
-                            <li><a asp-action="Index" asp-route-page="@(ViewBag.PageIndex+1)">@(ViewBag.PageIndex+1)</a></li>
+                    <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex + 1)">@(ViewBag.PageIndex + 1)</a></li>
 
-                            <li><a class="Next" asp-action="index" asp-route-page="@(ViewBag.PageIndex + 1)"><i class="ion-ios-arrow-right"></i></a></li>
-                        }
+                                    @if (ViewBag.PageIndex == 1 && (ViewBag.PageIndex + 2) < ViewBag.PageCount)
+                                    {
+                    <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex+2)">@(ViewBag.PageIndex+2)</a></li>}
+                                                    <li class="page-item">
+                                                        <a class="page-link" asp-route-page="@(ViewBag.PageIndex + 1)" aria-label="Next">
+                                                            @(">")
+                                                        </a>
+                                                    </li>
+                                                                    <li class="page-item">
+                                                                        <a class="page-link" asp-action="index" asp-route-page="@ViewBag.PageCount" aria-label="Next">
+                                                                            @(">>")
+                                                                        </a>
+                                                                    </li>}
 
                     </ul>
                 </div>
@@ -91,7 +109,7 @@
                     <ul>
                         @foreach (Category category in Model.Categories)
                         {
-                            <li><a href="">@category.Name</a></li>
+                            <li><a asp-action="Index" asp-route-cid="@category.Id">@category.Name</a></li>
                         }
 
                     </ul>
@@ -99,9 +117,11 @@
                 <div class="shop-tags">
                     <h3>Tags</h3>
                     <div class="tags-name">
+                    
+                        
                         @foreach (Tag tag in Model.Tags)
                         {
-                            <a href="">@tag.Name</a>
+                            <a asp-action="Index" asp-route-tid="@tag.Id" >@tag.Name</a>
                         }
 
                     </div>

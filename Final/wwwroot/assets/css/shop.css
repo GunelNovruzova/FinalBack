@@ -179,6 +179,7 @@ header .booktable a:hover {
   border: 1px solid transparent;
   margin-top: 10px;
   position: relative;
+  padding: 0px;
 }
 .shop-detail .product-detail img {
   width: 350px;
@@ -199,8 +200,8 @@ header .booktable a:hover {
   display: block;
   outline: none;
   position: absolute;
-  top: 28%;
-  left: 28%;
+  top: 47%;
+  left: 23%;
   width: auto;
   border: 2px solid #cfa86e;
   border-radius: 0;

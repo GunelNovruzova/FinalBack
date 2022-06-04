@@ -1,6 +1,7 @@
 ﻿using Final.DAL;
 using Final.Models;
 using Final.ViewModels.Basket;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -14,10 +15,12 @@ namespace Final.Controllers
     public class BasketController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly UserManager<AppUser> _userManager;
 
-        public BasketController(AppDbContext context)
+        public BasketController(AppDbContext context, UserManager<AppUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
         public async Task<IActionResult> Index()
         {
@@ -170,8 +173,8 @@ namespace Final.Controllers
                 return BadRequest();
             }
 
-            cookieBasket = JsonConvert.SerializeObject(basketVMs);
-            HttpContext.Response.Cookies.Append("basket", cookieBasket);
+           
+            HttpContext.Response.Cookies.Append("basket", JsonConvert.SerializeObject(basketVMs));
 
             foreach (BasketVM basketVM in basketVMs)
             {
@@ -180,6 +183,27 @@ namespace Final.Controllers
                 basketVM.Price = dbProduct.Price;
                 basketVM.Name = dbProduct.Name;
 
+            }
+            cookieBasket = JsonConvert.SerializeObject(basketVMs);
+            if (User.Identity.IsAuthenticated && !string.IsNullOrWhiteSpace(cookieBasket))
+            {
+                AppUser appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name.ToUpper() && !u.IsAdmin);
+                List<BasketVM> BasketVMs = JsonConvert.DeserializeObject<List<BasketVM>>(cookieBasket);
+                List<Basket> baskets = new List<Basket>();
+                List<Basket> existedbaskets = await _context.Baskets.Where(b => b.AppUserId == appUser.Id).ToListAsync();
+                for (int i = 0; i < BasketVMs.Count; i++)
+                {
+                    Basket basket = new Basket
+                    {
+                        AppUserId = appUser.Id,
+                        ProductId = product.Id,
+                        Count = basketVMs[i].Count,
+                    };
+                    baskets.Add(basket);
+                }
+                _context.RemoveRange(existedbaskets);
+                await _context.Baskets.AddRangeAsync(baskets);
+                await _context.SaveChangesAsync();
             }
 
             return PartialView("_BasketIndexPartial", basketVMs);
@@ -214,8 +238,7 @@ namespace Final.Controllers
                 return BadRequest();
             }
 
-            cookieBasket = JsonConvert.SerializeObject(basketVMs);
-            HttpContext.Response.Cookies.Append("basket", cookieBasket);
+            HttpContext.Response.Cookies.Append("basket", JsonConvert.SerializeObject(basketVMs));
 
             foreach (BasketVM basketVM in basketVMs)
             {
@@ -224,6 +247,29 @@ namespace Final.Controllers
                 basketVM.Price = dbProduct.Price;
                 basketVM.Name = dbProduct.Name;
 
+            }
+
+
+            cookieBasket = JsonConvert.SerializeObject(basketVMs);
+            if (User.Identity.IsAuthenticated && !string.IsNullOrWhiteSpace(cookieBasket))
+            {
+                AppUser appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name.ToUpper() && !u.IsAdmin);
+                List<BasketVM> BasketVMs = JsonConvert.DeserializeObject<List<BasketVM>>(cookieBasket);
+                List<Basket> baskets = new List<Basket>();
+                List<Basket> existedbaskets = await _context.Baskets.Where(b => b.AppUserId == appUser.Id).ToListAsync();
+                for (int i = 0; i < BasketVMs.Count; i++)
+                {
+                    Basket basket = new Basket
+                    {
+                        AppUserId = appUser.Id,
+                        ProductId = product.Id,
+                        Count = basketVMs[i].Count,
+                    };
+                    baskets.Add(basket);
+                }
+                _context.RemoveRange(existedbaskets);
+                await _context.Baskets.AddRangeAsync(baskets);
+                await _context.SaveChangesAsync();
             }
 
             return PartialView("_BasketPartial", basketVMs);

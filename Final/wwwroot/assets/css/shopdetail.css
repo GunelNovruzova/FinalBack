@@ -150,7 +150,7 @@ header .booktable a:hover {
 
 .product-detail {
   background-color: #030E16;
-  padding: 70px 0;
+  padding: 0px;
 }
 .product-detail .all {
   display: flex;
@@ -942,3 +942,8 @@ footer .col-lg-4 span {
     width: 6%;
   }
 }/*# sourceMappingURL=shopdetail.css.map */
+
+
+.shop-detail .product-detail {
+    padding: 0px;
+}
