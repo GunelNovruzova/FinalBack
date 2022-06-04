@@ -1,0 +1,165 @@
+﻿@model ShopVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section class="shop">
+    <div class="shop-text">
+        <h1>Shop</h1>
+        <a href="">Home </a>
+        <i class="fa-solid fa-angle-right"></i>
+        <span>Shop</span>
+    </div>
+</section>
+
+<section class="shop-detail">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-12">
+                <div class="features">
+                    <p>Showing <span>1–4</span> Of <span>11</span> Results</p>
+                    <form action="">
+                        <select name="" id="">
+                            <option value="">Sort by Relevance</option>
+                            <option value="">Name (A-Z)</option>
+                            <option value="">Name (Z-A)</option>
+                            <option value="">Price (Low > High)</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="row">
+                    @foreach (Product product in Model.Products)
+                    {
+                        <div class="col-lg-6 col-12">
+                            <div class="product-detail">
+                                <div class="imgcart">
+                                    <a href="shopdetail.html"><img src="~/assets/img/meals/@product.Image" alt=""></a>
+                                    <a asp-controller="Product" asp-action="AddBasket" asp-route-id="@product.Id" class="addtocart">Add to cart</a>
+                                </div>
+                            </div>
+                            <div class="product-text">
+                                <h4>@product.Name</h4>
+                                <span>@product.Price₼</span>
+                                <br>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+
+
+
+
+
+                        </div>
+                       
+                     
+                       
+                    }
+                </div>
+                <div class="blog-pagination">
+                    <ul class="justify-content-center">
+                        @if (ViewBag.PageIndex > 1)
+                        {
+                            <li><a class="Previous" asp-action="Index" asp-route-page="@(ViewBag.PageIndex-1)"><i class="ion-ios-arrow-left"></i></a></li>
+
+
+                            <li><a asp-action="Index" asp-route-page="@(ViewBag.PageIndex-1)">@(ViewBag.PageIndex-1)</a></li>
+                        }
+                        <li class="active"><a asp-action="index" asp-route-page="@ViewBag.PageIndex">@ViewBag.PageIndex</a></li>
+
+                        @if (ViewBag.PageIndex < ViewBag.PageCount)
+                        {
+                            <li><a asp-action="Index" asp-route-page="@(ViewBag.PageIndex+1)">@(ViewBag.PageIndex+1)</a></li>
+
+                            <li><a class="Next" asp-action="index" asp-route-page="@(ViewBag.PageIndex + 1)"><i class="ion-ios-arrow-right"></i></a></li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-12">
+                <div class="right">
+                    <form action="">
+                        <input type="text" placeholder="Serach">
+                        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </div>
+                <div class="shop-categories">
+                    <h3>Categories</h3>
+                    <ul>
+                        @foreach (Category category in Model.Categories)
+                        {
+                            <li><a href="">@category.Name</a></li>
+                        }
+
+                    </ul>
+                </div>
+                <div class="shop-tags">
+                    <h3>Tags</h3>
+                    <div class="tags-name">
+                        @foreach (Tag tag in Model.Tags)
+                        {
+                            <a href="">@tag.Name</a>
+                        }
+
+                    </div>
+
+                </div>
+                <div class="recent">
+                    <h3>Top Rated Products</h3>
+                    <div class="posts">
+                        <img src="~/assets/img/meals/quzupirzola.jpg" alt="">
+                        <div class="post-text">
+                            <h6>Stuffed Lamb with Spinach and Pine Nuts Recipe</h6>
+                            <p>$11</p>
+
+                            <div class="icons">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="posts">
+                        <img src="~/assets/img/meals/dessert.jpg" alt="">
+
+                        <div class="post-text">
+                            <h6>Best Hamburger Patty Recipe</h6>
+                            <p>$11</p>
+
+                            <div class="icons">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="posts">
+                        <img src="~/assets/img/meals/blogburger.jpg" alt="">
+                        <div class="post-text">
+                            <h6>Best Hamburger Patty Recipe</h6>
+                            <p>$11</p>
+
+                            <div class="icons">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

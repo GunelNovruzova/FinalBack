@@ -1,0 +1,100 @@
+﻿@model BlogVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section class="blog">
+    <div class="blog-text">
+        <h1>Blog</h1>
+        <a href="">Home </a>
+        <i class="fa-solid fa-angle-right"></i>
+        <span>Blog</span>
+    </div>
+</section>
+<section class="aboutblogs">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-sm-12 col-12">
+                @foreach (Blog blog in Model.Blogs)
+                {
+                    <div class="generalblog">
+                        <div class="blogimage">
+                            <img src="~/assets/img/meals/@blog.Image" alt="">
+                        </div>
+                        <div class="blogcontent">
+                            <h4>@blog.Title</h4>
+                            <p>@blog.Description</p>
+                            <a href="blogdetail.html">Read More</a>
+                        </div>
+                    </div>
+                }
+
+                <div class="blog-pagination">
+                    <ul class="justify-content-center">
+                        @if (ViewBag.PageIndex > 1)
+                        {
+                            <li><a class="Previous" asp-action="Index" asp-route-page="@(ViewBag.PageIndex-1)"><i class="ion-ios-arrow-left"></i></a></li>
+
+
+                            <li><a asp-action="Index" asp-route-page="@(ViewBag.PageIndex-1)">@(ViewBag.PageIndex-1)</a></li>
+                        }
+                        <li class="active"><a asp-action="index" asp-route-page="@ViewBag.PageIndex">@ViewBag.PageIndex</a></li>
+
+                        @if (ViewBag.PageIndex < ViewBag.PageCount)
+                        {
+                            <li><a asp-action="Index" asp-route-page="@(ViewBag.PageIndex + 1)">@(ViewBag.PageIndex + 1)</a></li>
+
+                            <li><a class="Next" asp-action="index" asp-route-page="@(ViewBag.PageIndex + 1)"><i class="ion-ios-arrow-right"></i></a></li>}
+
+                        </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12 col-12">
+                <div class="right">
+                    <form action="">
+                        <input type="text" placeholder="Serach">
+                        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </div>
+                <div class="recent">
+                    <h3>Recent Posts</h3>
+                    <div class="posts">
+                        <img src="~/assets/img/meals/quzupirzola.jpg" alt="">
+                        <h6>Stuffed Lamb with Spinach and Pine Nuts Recipe</h6>
+                    </div>
+                    <div class="posts">
+                        <img src="~/assets/img/meals/dessert.jpg" alt="">
+                        <h6>Elegant Dessert: 10 Tips How to Make It at Home</h6>
+                    </div>
+                    <div class="posts">
+                        <img src="~/assets/img/meals/blogburger.jpg" alt="">
+                        <h6>Best Hamburger Patty Recipe</h6>
+                    </div>
+
+                </div>
+                <div class="blog-categories">
+                    <h3>Categories</h3>
+                    <ul>
+                        @foreach (Category category in Model.Categories)
+                        {
+                            <li><a href="">@category.Name</a></li>
+                        }
+
+                    </ul>
+                </div>
+                <div class="blog-tags">
+                    <h3>Tags</h3>
+                    <div class="tags-name">
+                        @foreach (Tag tag in Model.Tags)
+                        {
+                            <a href="">@tag.Name</a>
+                        }
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
