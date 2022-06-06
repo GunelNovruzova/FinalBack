@@ -49,7 +49,7 @@ namespace Final.Areas.Manage.Controllers
            return View();
         }
 
-        [HttpPost]
+        [HttpPost] 
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Blog blog, bool? status, int page = 1)
         {

@@ -23,6 +23,8 @@
 
 
                     <form id="shopFilter" name="shopFilter">
+                        <input type="hidden" name="cid" value="@ViewBag.cid"/>
+                        <input type="hidden" name="tid" value="@ViewBag.tid"/>
                         <select id="shopFilter" name="sortby" onchange="form.submit()">
                             <option value="">Sort by Relevance</option>
                             <option value="AZ">Name (A-Z)</option>
@@ -60,43 +62,43 @@
                         @if (ViewBag.PageIndex > 1)
                         {
                     <li class="page-item">
-                        <a class="page-link" asp-action="index" asp-route-page="1" aria-label="Previous">
+                        <a class="page-link" asp-action="index" asp-route-page="1"  asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid" aria-label="Previous">
                             @("<<")
                         </a>
                     </li>
                                     <li class="page-item">
-                                        <a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-1)" aria-label="Previous">
+                                        <a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-1)"  asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid" aria-label="Previous">
                                             @("<")
                                         </a>
                                     </li>
                                                     @if (ViewBag.PageIndex == ViewBag.PageCount && ViewBag.PageIndex > 2)
                                                     {
-                                    <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-2)">@(ViewBag.PageIndex-2)</a></li>}
-                                                                    <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-1)">@(ViewBag.PageIndex-1)</a></li>}
+                                    <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-2)"  asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@(ViewBag.PageIndex-2) </a></li>}
+                                                                    <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-1)"  asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@(ViewBag.PageIndex-1)</a></li>}
 
-                        <li class="page-item"><a class="page-link" style="background: #030E16; color: white;" asp-action="index" asp-route-page="@ViewBag.PageIndex">@ViewBag.PageIndex</a></li>
+                        <li class="page-item"><a class="page-link" style="background: #030E16; color: white;" asp-action="index" asp-route-page="@ViewBag.PageIndex"  asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@ViewBag.PageIndex</a></li>
 
                         @if (ViewBag.PageIndex < ViewBag.PageCount)
                         {
-                    <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex + 1)">@(ViewBag.PageIndex + 1)</a></li>
+                    <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex + 1)"  asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@(ViewBag.PageIndex + 1)</a></li>
 
                                     @if (ViewBag.PageIndex == 1 && (ViewBag.PageIndex + 2) < ViewBag.PageCount)
                                     {
-                    <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex+2)">@(ViewBag.PageIndex+2)</a></li>}
+                    <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex+2)"  asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@(ViewBag.PageIndex+2)</a></li>}
                                                     <li class="page-item">
-                                                        <a class="page-link" asp-route-page="@(ViewBag.PageIndex + 1)" aria-label="Next">
+                                                        <a class="page-link" asp-route-page="@(ViewBag.PageIndex + 1)"  asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid" aria-label="Next">
                                                             @(">")
                                                         </a>
                                                     </li>
                                                                     <li class="page-item">
-                                                                        <a class="page-link" asp-action="index" asp-route-page="@ViewBag.PageCount" aria-label="Next">
+                                                                        <a class="page-link" asp-action="index" asp-route-page="@ViewBag.PageCount"  asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid" aria-label="Next">
                                                                             @(">>")
                                                                         </a>
                                                                     </li>}
 
                     </ul>
                 </div>
-            </div>
+            </div> 
             <div class="col-lg-4 col-12">
                 <div class="right">
                     <form action="">

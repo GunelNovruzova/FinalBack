@@ -11,5 +11,6 @@ namespace Final.ViewModels.Blog
         public List<Category> Categories { get; set; }
         public List<Tag> Tags { get; set; }
         public List<Final.Models.Blog> Blogs { get; set; }
+        public Review Review { get; set; }
     }
 }

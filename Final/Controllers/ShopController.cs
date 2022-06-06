@@ -18,45 +18,45 @@ namespace Final.Controllers
         {
             _context = context;
         }
-        public async Task <IActionResult> Index(string sortby,int? cid,  int? tid, int page = 1)
+        public async Task<IActionResult> Index(string sortby, int? cid, int? tid, int page = 1)
         {
-            
-             List<Product> products = new List<Product>();
+            ViewBag.cid = cid;
+            ViewBag.tid = tid;
+            IQueryable<Product> products = _context.Products;
+            if (cid != null)
+            {
+                products = products.Where(p => p.CategoryId == cid);
 
+            }
+            if (tid != null)
+            {
+                products = products
+                .Include(p => p.ProductTags).ThenInclude(pt => pt.Tag)
+                 .Where(p => p.ProductTags.Any(t => t.Tag.Id == tid));
+            }
 
             switch (sortby)
             {
                 case "AZ":
-                    products = await _context.Products.Where(p => !p.IsDeleted).Skip((page - 1) * 6).Take(6).OrderBy(p => p.Name).ToListAsync();
+                    products = products.Where(p => !p.IsDeleted).Skip((page - 1) * 6).Take(6).OrderBy(p => p.Name);
                     break;
                 case "ZA":
-                    products = await _context.Products.Where(p => !p.IsDeleted).Skip((page - 1) * 6).Take(6).OrderByDescending(p => p.Name).ToListAsync();
+                    products = products.Where(p => !p.IsDeleted).Skip((page - 1) * 6).Take(6).OrderByDescending(p => p.Name);
                     break;
                 case "LH":
-                    products = await _context.Products.Where(p => !p.IsDeleted).Skip((page - 1) * 6).Take(6).OrderBy(p => p.Price).ToListAsync();
+                    products = products.Where(p => !p.IsDeleted).Skip((page - 1) * 6).Take(6).OrderBy(p => p.Price);
                     break;
                 case "HL":
-                    products = await _context.Products.Where(p => !p.IsDeleted).Skip((page - 1) * 6).Take(6).OrderByDescending(p => p.Price).ToListAsync();
+                    products = products.Where(p => !p.IsDeleted).Skip((page - 1) * 6).Take(6).OrderByDescending(p => p.Price);
                     break;
                 default:
-                    products = await _context.Products.Where(p => !p.IsDeleted).Skip((page - 1) * 6).Take(6).OrderBy(p => p.Name).ToListAsync();
+                    products = products.Where(p => !p.IsDeleted).Skip((page - 1) * 6).Take(6).OrderBy(p => p.Name);
                     break;
             }
-            if (cid != null)
-            {
-                products = await _context.Products.Where(p => p.CategoryId == cid).ToListAsync();
 
-            }
-            if (tid !=null)
-            {
-                products = await _context.Products
-                .Include(p => p.ProductTags).ThenInclude(pt => pt.Tag)
-                 .Where(p => p.ProductTags.Any(t => t.Tag.Id == tid))
-                .ToListAsync();
-            }
             ShopVM shopVM = new ShopVM
             {
-                Products = products,
+                Products = products.ToList(),
                 Categories = await _context.Categories.Include(c => c.Products).Where(c => !c.IsDeleted).Take(4).ToListAsync(),
                 Tags = await _context.Tags.Where(T => !T.IsDeleted).Take(4).ToListAsync()
             };
@@ -86,7 +86,7 @@ namespace Final.Controllers
                 Products = await _context.Products
                 .Where(p => p.CategoryId == product.CategoryId)
                 .Take(3)
-                .OrderByDescending(p=>p.CreatedAt)
+                .OrderByDescending(p => p.CreatedAt)
                 .ToListAsync()
             };
 
@@ -94,26 +94,8 @@ namespace Final.Controllers
             return View(productVM);
         }
 
-        public async Task<IActionResult> Tag(int? tid)
-        {
-            if (tid == null) return BadRequest();
-            Product product = await _context.Products
-                 .Include(p => p.ProductTags).ThenInclude(pt => pt.Tag)
-                 .FirstOrDefaultAsync(p => p.Id == (int)tid);
-            if (product == null) return NotFound();
-            ProductVM productVM = new ProductVM()
-            {
-                Product = product,
 
-                Products = await _context.Products
-             .Where(p => p.TagIds == product.TagIds)
-             .Take(3)
-             .OrderByDescending(p => p.CreatedAt)
-             .ToListAsync()
-            };
-            return View(productVM);
-        }
-       
+
 
     }
 }

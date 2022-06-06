@@ -23,50 +23,54 @@
                         </div>
                         <div class="blogcontent">
                             <h4>@blog.Title</h4>
-                            <p>@Html.Raw(blog.Description.ToString().Substring(0,200))...</p>
+                            <p>@Html.Raw(blog.Description.ToString().Substring(0, 200))...</p>
                             <a asp-action="Detail" asp-controller="Blog" asp-route-bid="@blog.Id">Read More</a>
                         </div>
                     </div>
                 }
-
+               
                 <div class="blog-pagination">
                     <ul class="justify-content-center">
                         @if (ViewBag.PageIndex > 1)
                         {
-                    <li class="page-item">
-                        <a class="page-link" asp-action="index" asp-route-page="1" aria-label="Previous">
-                            @("<<")
-                        </a>
-                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-1)" aria-label="Previous">
-                                            @("<")
-                                        </a>
-                                    </li>
-                                                    @if (ViewBag.PageIndex == ViewBag.PageCount && ViewBag.PageIndex > 2)
-                                                    {
-                                    <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-2)">@(ViewBag.PageIndex-2)</a></li>}
-                                                                    <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-1)">@(ViewBag.PageIndex-1)</a></li>}
+                            <li class="page-item">
+                                <a class="page-link" asp-action="index" asp-route-page="1" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid" aria-label="Previous">
+                                    @("<<")
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-1)" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid" aria-label="Previous">
+                                    @("<")
+                                </a>
+                            </li>
+                            @if (ViewBag.PageIndex == ViewBag.PageCount && ViewBag.PageIndex > 2)
+                            {
+                                <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-2)" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@(ViewBag.PageIndex-2)</a></li>
+}
+                            <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-1)" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@(ViewBag.PageIndex-1)</a></li>
+}
 
-                        <li class="page-item"><a class="page-link" style="background: #030E16; color: white;" asp-action="index" asp-route-page="@ViewBag.PageIndex">@ViewBag.PageIndex</a></li>
+                        <li class="page-item"><a class="page-link" style="background: #030E16; color: white;" asp-action="index" asp-route-page="@ViewBag.PageIndex" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@ViewBag.PageIndex</a></li>
 
                         @if (ViewBag.PageIndex < ViewBag.PageCount)
                         {
-                    <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex + 1)">@(ViewBag.PageIndex + 1)</a></li>
+                            <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex + 1)" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@(ViewBag.PageIndex + 1)</a></li>
 
-                                    @if (ViewBag.PageIndex == 1 && (ViewBag.PageIndex + 2) < ViewBag.PageCount)
-                                    {
-                    <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex+2)">@(ViewBag.PageIndex+2)</a></li>}
-                                                    <li class="page-item">
-                                                        <a class="page-link" asp-route-page="@(ViewBag.PageIndex + 1)" aria-label="Next">
-                                                            @(">")
-                                                        </a>
-                                                    </li>
-                                                                    <li class="page-item">
-                                                                        <a class="page-link" asp-action="index" asp-route-page="@ViewBag.PageCount" aria-label="Next">
-                                                                            @(">>")
-                                                                        </a>
-                                                                    </li>}
+                            @if (ViewBag.PageIndex == 1 && (ViewBag.PageIndex + 2) < ViewBag.PageCount)
+                            {
+                                <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex+2)" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@(ViewBag.PageIndex+2)</a></li>
+}
+                            <li class="page-item">
+                                <a class="page-link" asp-route-page="@(ViewBag.PageIndex + 1)" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid" aria-label="Next">
+                                    @(">")
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" asp-action="index" asp-route-page="@ViewBag.PageCount" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid" aria-label="Next">
+                                    @(">>")
+                                </a>
+                            </li>
+}
 
                     </ul>
                 </div>
@@ -80,18 +84,14 @@
                 </div>
                 <div class="recent">
                     <h3>Recent Posts</h3>
-                    <div class="posts">
-                        <img src="~/assets/img/meals/quzupirzola.jpg" alt="">
-                        <h6>Stuffed Lamb with Spinach and Pine Nuts Recipe</h6>
-                    </div>
-                    <div class="posts">
-                        <img src="~/assets/img/meals/dessert.jpg" alt="">
-                        <h6>Elegant Dessert: 10 Tips How to Make It at Home</h6>
-                    </div>
-                    <div class="posts">
-                        <img src="~/assets/img/meals/blogburger.jpg" alt="">
-                        <h6>Best Hamburger Patty Recipe</h6>
-                    </div>
+                    @foreach (Blog blog in Model.Blogs.Take(3))
+                    {
+                        <div class="posts">
+                            <img src="~/assets/img/meals/@blog.Image" alt="">
+                            <h6>@blog.Title</h6>
+                        </div>
+                    }
+ 
 
                 </div>
                 <div class="blog-categories">
@@ -99,7 +99,7 @@
                     <ul>
                         @foreach (Category category in Model.Categories)
                         {
-                            <li><a href="">@category.Name</a></li>
+                            <li><a asp-action="Index" asp-controller="Blog" asp-route-cid="@category.Id" asp-route-page="@ViewBag.PageIndex">@category.Name</a></li>
                         }
 
                     </ul>
@@ -109,7 +109,7 @@
                     <div class="tags-name">
                         @foreach (Tag tag in Model.Tags)
                         {
-                            <a href="">@tag.Name</a>
+                            <a asp-action="Index" asp-controller="Blog" asp-route-tid="@tag.Id" asp-route-page="@ViewBag.PageIndex">@tag.Name</a>
                         }
 
                     </div>

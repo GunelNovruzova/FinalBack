@@ -72,11 +72,6 @@ namespace Final.Controllers
             {
                 return RedirectToAction("login", "Account");
             }
-
-            //List<Basket> baskets = await _context.Baskets.Include(b => b.Product).Where(b => b.AppUserId == appUser.Id).ToListAsync();
-
-            //ViewBag.Basket = baskets;
-
             double total = 0;
 
             List<Basket> baskets = await _context.Baskets
@@ -98,8 +93,7 @@ namespace Final.Controllers
             }
 
             List<OrderItem> orderItems = new List<OrderItem>();
-            //double total = 0;
-
+           
             foreach (Basket item in baskets)
             {
                 total = total + (item.Count * (item.Product.Price));

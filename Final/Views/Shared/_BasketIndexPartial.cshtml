@@ -19,7 +19,7 @@
             <tbody>
                 @foreach (BasketVM basketVM in Model)
                 {
-                    subtotal += basketVM.Count * basketVM.Price;
+                    subtotal = basketVM.Count * basketVM.Price;
                     total += subtotal;
                     <tr>
                         <td><img src="~/assets/img/meals/@basketVM.Image" alt=""></td>
