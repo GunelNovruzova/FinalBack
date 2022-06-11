@@ -117,16 +117,16 @@ namespace Final.Areas.Manage.Controllers
                 if (!team.ImageFile.CheckFileContentType("image/jpeg"))
                 {
                     ModelState.AddModelError("ImageFile", "The image type does not match");
-                    return View(dbteam);
+                    return View();
                 }
-                if (!team.ImageFile.CheckFileSize(10000))
+                if (!team.ImageFile.CheckFileSize(100000))
                 {
                     ModelState.AddModelError("ImageFile", "The Size of the Selected Image Can Be Maximum 10000 Kb");
-                    return View(dbteam);
+                    return View();
 
                 }
                
-                    Helper.DeleteFile(_env, dbteam.Image, "assets", "img", "chefs");
+                    //Helper.DeleteFile(_env, dbteam.Image, "assets", "img", "chefs");
               
                 dbteam.Image = team.ImageFile.CreateFile(_env, "assets", "img", "chefs");
             }

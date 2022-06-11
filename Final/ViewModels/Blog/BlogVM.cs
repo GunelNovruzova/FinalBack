@@ -10,7 +10,8 @@ namespace Final.ViewModels.Blog
     {
         public List<Category> Categories { get; set; }
         public List<Tag> Tags { get; set; }
+        public Final.Models.Blog Blog { get; set; }
         public List<Final.Models.Blog> Blogs { get; set; }
-        public Review Review { get; set; }
+        public List<Review> Reviews { get; set; }
     }
 }

@@ -34,9 +34,6 @@
                         @if (Model.IsDeleted)
                         {
             <a asp-action="Restore" asp-controller="product" asp-area="manage" asp-route-id="@Model.Id" class="btn btn-primary">Restore</a> }
-        else
-        {
-<a asp-action="Delete" asp-controller="product" asp-area="manage" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>}
                         <a asp-action="index" asp-controller="product" asp-area="manage" class="btn btn-primary">Go to Product list</a>
                     </div>
                 </div>

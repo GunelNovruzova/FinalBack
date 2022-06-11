@@ -1,6 +1,7 @@
 ﻿using Final.DAL;
 using Final.Models;
 using Final.ViewModels.Basket;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -14,9 +15,11 @@ namespace Final.Controllers
     public class ProductController : Controller
     {
         private readonly AppDbContext _context;
-        public ProductController(AppDbContext context)
+        private readonly UserManager<AppUser> _userManager;
+        public ProductController(AppDbContext context, UserManager<AppUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
         public IActionResult Index()
         {
@@ -32,7 +35,7 @@ namespace Final.Controllers
             List<BasketVM> basketVMs = null;
 
 
-            if (cookiebasket != null)
+            if (!string.IsNullOrWhiteSpace(cookiebasket))
             {
                 basketVMs = JsonConvert.DeserializeObject<List<BasketVM>>(cookiebasket);
                 if (basketVMs.Any(b => b.ProductId == id))
@@ -58,14 +61,51 @@ namespace Final.Controllers
                     Count = count,
                 });
             }
-            cookiebasket = JsonConvert.SerializeObject(basketVMs);
-            HttpContext.Response.Cookies.Append("basket", cookiebasket);
+            HttpContext.Response.Cookies.Append("basket", JsonConvert.SerializeObject(basketVMs));
             foreach (BasketVM basketVM in basketVMs)
             {
                 Product dbProduct = await _context.Products.FirstOrDefaultAsync(p => p.Id == basketVM.ProductId);
                 basketVM.Image = dbProduct.Image;
                 basketVM.Price = dbProduct.Price;
                 basketVM.Name = dbProduct.Name;
+            }
+
+            string coockieBasket = JsonConvert.SerializeObject(basketVMs);
+
+            if (User.Identity.IsAuthenticated && !string.IsNullOrWhiteSpace(coockieBasket))
+            {
+                AppUser appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName.ToUpper() == User.Identity.Name.ToUpper());
+                List<BasketVM> BasketVMs = JsonConvert.DeserializeObject<List<BasketVM>>(coockieBasket);
+
+                List<Basket> baskets = new List<Basket>();
+                List<Basket> existedBasket = await _context.Baskets.Where(b => b.AppUserId == appUser.Id).ToListAsync();
+                foreach (BasketVM basketVM in BasketVMs)
+                {
+                    if (existedBasket.Any(b => b.ProductId == basketVM.ProductId))
+                    {
+                        existedBasket.Find(b => b.ProductId == basketVM.ProductId).Count = basketVM.Count;
+                    }
+                    else
+                    {
+                        Basket basket = new Basket
+                        {
+                            AppUserId = appUser.Id,
+                            ProductId = basketVM.ProductId,
+                            Count = basketVM.Count,
+                            CreatedAt = DateTime.UtcNow.AddHours(4)
+                        };
+
+                        baskets.Add(basket);
+                    }
+
+
+                }
+
+                if (baskets.Count > 0)
+                {
+                    await _context.Baskets.AddRangeAsync(baskets);
+                }
+                await _context.SaveChangesAsync();
             }
               return PartialView("_BasketPartial", basketVMs);
         }

@@ -46,6 +46,9 @@ namespace Final.Migrations
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
 
+                    b.Property<string>("EmailConfirmationToken")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
@@ -71,6 +74,9 @@ namespace Final.Migrations
                         .HasMaxLength(256);
 
                     b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordResetToken")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
@@ -406,6 +412,63 @@ namespace Final.Migrations
                     b.ToTable("ProductTags");
                 });
 
+            modelBuilder.Entity("Final.Models.Review", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1000)")
+                        .HasMaxLength(1000);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Star")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("BlogId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Reviews");
+                });
+
             modelBuilder.Entity("Final.Models.Setting", b =>
                 {
                     b.Property<int>("Id")
@@ -678,7 +741,7 @@ namespace Final.Migrations
             modelBuilder.Entity("Final.Models.Order", b =>
                 {
                     b.HasOne("Final.Models.AppUser", "AppUser")
-                        .WithMany()
+                        .WithMany("Orders")
                         .HasForeignKey("AppUserId");
                 });
 
@@ -711,6 +774,23 @@ namespace Final.Migrations
                     b.HasOne("Final.Models.Tag", "Tag")
                         .WithMany()
                         .HasForeignKey("TagId");
+                });
+
+            modelBuilder.Entity("Final.Models.Review", b =>
+                {
+                    b.HasOne("Final.Models.AppUser", "AppUser")
+                        .WithMany("Reviews")
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("Final.Models.Blog", "Blog")
+                        .WithMany("Reviews")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Final.Models.Product", null)
+                        .WithMany("Reviews")
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

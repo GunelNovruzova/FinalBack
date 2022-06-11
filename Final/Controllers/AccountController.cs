@@ -5,10 +5,13 @@ using Final.ViewModels.Basket;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace Final.Controllers
@@ -19,13 +22,15 @@ namespace Final.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly AppDbContext _context;
+        private readonly IConfiguration _config;
 
-        public AccountController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, AppDbContext context)
+        public AccountController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, AppDbContext context, IConfiguration config)
         {
             _roleManager = roleManager;
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
+            _config = config;
         }
         public IActionResult Register()
         {
@@ -45,6 +50,8 @@ namespace Final.Controllers
                 IsAdmin = false
             };
 
+            string token = Guid.NewGuid().ToString();
+            appUser.EmailConfirmationToken = token;
             IdentityResult identityResult = await _userManager.CreateAsync(appUser, registerVM.Password);
 
             if (!identityResult.Succeeded)
@@ -94,10 +101,44 @@ namespace Final.Controllers
             }
 
             await _userManager.AddToRoleAsync(appUser, "Member");
+            var link = Url.Action(nameof(VerifyEmail), "Account", new { id = appUser.Id, token }, Request.Scheme, Request.Host.ToString());
+            EmailVM email = _config.GetSection("Email").Get<EmailVM>();
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress(email.SenderEmail, email.SenderName);
+            mail.To.Add(appUser.Email);
+            mail.Subject = "Verify Email";
+            mail.Body = $"<a href=\"{link}\">Verify</a>";
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = email.Server;
+            smtp.Port = email.Port;
+            smtp.EnableSsl = true;
+            smtp.Credentials = new NetworkCredential(email.SenderEmail, email.Password);
+            smtp.Send(mail);
 
-            await _signInManager.SignInAsync(appUser, true);
+            //await _signInManager.SignInAsync(appUser, true);
+            //return RedirectToAction("index", "home");
 
-            return RedirectToAction("index", "home");
+            return RedirectToAction(nameof(EmailVerification));
+        }
+        public IActionResult EmailVerification() => View();
+        public async Task<IActionResult> VerifyEmail(string id, string token)
+        {
+            if (string.IsNullOrWhiteSpace(id)) return NotFound();
+            AppUser user = await _userManager.FindByIdAsync(id);
+            if (user==null) return NotFound();
+            if (user.EmailConfirmationToken !=token) return BadRequest();
+            var emailConfirmationToken = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            IdentityResult result= await _userManager.ConfirmEmailAsync(user, emailConfirmationToken);
+            if (result.Succeeded)
+            {
+                string newToken = Guid.NewGuid().ToString();
+                user.EmailConfirmationToken = newToken;
+                await _userManager.UpdateAsync(user);
+                return View();
+            }
+
+            return BadRequest();
         }
         public IActionResult Login()
         {
@@ -113,7 +154,7 @@ namespace Final.Controllers
         {
             if (!ModelState.IsValid) return View();
 
-            AppUser appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.NormalizedEmail == loginVM.Email.ToUpper() && !u.IsAdmin);
+            AppUser appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.NormalizedEmail == loginVM.Email.ToUpperInvariant() && !u.IsAdmin);
 
             if (appUser == null)
             {
@@ -121,6 +162,11 @@ namespace Final.Controllers
                 return View();
             }
             Microsoft.AspNetCore.Identity.SignInResult signInResult = await _signInManager.PasswordSignInAsync(appUser, loginVM.Password, loginVM.RememberMe, true);
+            if (!await _userManager.IsEmailConfirmedAsync(appUser))
+            {
+                ModelState.AddModelError("", "You haven't confirmed your email");
+                return View();
+            }
 
             if (!signInResult.Succeeded)
             {
@@ -130,7 +176,7 @@ namespace Final.Controllers
 
             if (signInResult.IsLockedOut)
             {
-                ModelState.AddModelError("", "Hesabiniz Blocklanib");
+                ModelState.AddModelError("", "Your account has blocked");
                 return View();
             }
 

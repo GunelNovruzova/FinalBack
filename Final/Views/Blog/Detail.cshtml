@@ -1,4 +1,12 @@
-﻿@model Blog
+﻿@model BlogVM
+@{ 
+    int count = 0;
+    @foreach (Review review in Model.Reviews)
+    {
+        count+=1;
+    }
+}
+
 
     <section class="blog">
         <div class="blog-text">
@@ -16,32 +24,39 @@
                 <div class="col-lg-12">
                     <div class="generalblog">
                         <div class="blogimage">
-                            <img src="assets/img/meals/@Model.Image" alt="">
+                            <img src="assets/img/meals/@Model.Blog.Image" alt="">
                         </div>
                         <div class="blogcontent">
-                            <h4>@Model.Title</h4>
-                            <p>@Html.Raw(Model.Description)</p>
+                            <h4>@Model.Blog.Title</h4>
+                            <p>@Html.Raw(Model.Blog.Description)</p>
                         </div>
                     </div>
+                    @foreach (Review review in Model.Reviews)
+                    {
+                    <div class="comment" style="text-align:left; color:white;">
+                        <p>@review.Name</p>
+                        <p style="color:#CF8D38">@review.CreatedAt</p>
+                        <p>@review.Message</p>
+                        @if (User.Identity.IsAuthenticated && review.Name == User.Identity.Name)
+                        {
+                            <span class="reply-btn"><a asp-controller="Blog" asp-action="Edit" asp-route-id="@review.Id" style="text-decoration:none; color:aliceblue;">Change</a></span>
+                        }
+                    </div>
+                    }
+
+
                     <div class="comment">
                         <div class="comment-form">
 
-                            <form action="">
+                            <form method="post" enctype="multipart/form-data" asp-action="AddReview" asp-controller="blog" asp-route-rid="@Model.Blog.Id">
                                 <h5>Leave a Reply</h5>
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-lg-6">
-                                            <input type="text" placeholder="Name">
-
-                                        </div>
-                                        <div class="col-lg-6"><input type="text" placeholder="Email"></div>
-                                        <div class="col-lg-12"><input type="text" placeholder="Write comment" id="writing"></div>
+                                        <div class="col-lg-12"><input type="text" id="Message" name="Message"  placeholder="Write comment"></div>
                                         <div class="col-lg-12">  <button type="submit">Post Comment</button></div>
-
+                                     
                                     </div>
                                 </div>
-
-
                             </form>
                         </div>
 

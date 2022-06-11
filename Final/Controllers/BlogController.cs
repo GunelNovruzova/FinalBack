@@ -62,12 +62,18 @@ namespace Final.Controllers
 
             if (bid == null) return BadRequest();
             Blog blog = await _context.Blogs
-
+                 .Include(b => b.Reviews)
                 .FirstOrDefaultAsync(p => p.Id == (int)bid);
             if (blog == null) return NotFound();
 
+            BlogVM blogVM = new BlogVM()
+            {
+                Blog=blog,
+                Reviews = await _context.Reviews.Where(b=>b.BlogId==blog.Id).OrderByDescending(b=>b.CreatedAt).ToListAsync()
 
-            return View(blog);
+
+            };
+            return View(blogVM);
         }
 
         [HttpPost]
@@ -81,11 +87,13 @@ namespace Final.Controllers
             if (rid == null) return View();
 
             AppUser appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name && !u.IsAdmin);
+
             review.Email = appUser.Email;
             review.Name = appUser.UserName;
 
+            int bid = (int)rid;
 
-            if (review.Message == null || review.Email == null || review.Name == null) return RedirectToAction("detail", new { rid });
+            if (review.Message == null || review.Email == null || review.Name == null) return RedirectToAction("detail", new { bid });
 
             if (review.Star == null || review.Star < 0 || review.Star > 5)
             {
@@ -95,7 +103,36 @@ namespace Final.Controllers
             review.CreatedAt = DateTime.UtcNow.AddHours(4);
             await _context.Reviews.AddAsync(review);
             await _context.SaveChangesAsync();
-            return RedirectToAction("detail", new { rid });
+            return RedirectToAction("detail", new { bid });
+        }
+
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null) return BadRequest();
+            Review dbReview = await _context.Reviews
+                .Include(r => r.Blog)
+                .FirstOrDefaultAsync(r => r.Id == id);
+            if (dbReview == null) return NotFound();
+
+            return View(dbReview);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int? id, Review review)
+        {
+            if (id == null) return BadRequest();
+            Review dbReview = await _context.Reviews.FirstOrDefaultAsync(r => r.Id == id);
+            if (dbReview == null) return NotFound();
+
+            if (review.Id != id) return BadRequest();
+
+            Blog blog = await _context.Blogs.FirstOrDefaultAsync(b => b.Reviews.FirstOrDefault(r => r.Id == id).Id == id);
+
+            dbReview.Message = review.Message;
+            dbReview.UpdatedAt = DateTime.UtcNow.AddHours(4);
+            int bid = blog.Id;
+            await _context.SaveChangesAsync();
+            return RedirectToAction("detail", new { bid });
         }
     }
-}
+} 

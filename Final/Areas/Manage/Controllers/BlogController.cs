@@ -108,7 +108,7 @@ namespace Final.Areas.Manage.Controllers
                 ModelState.AddModelError("ImageFile", "Image must be selected");
                 return View();
             }
-           blog.CreatedAt = DateTime.UtcNow.AddHours(4);
+           blog.CreatedAt = DateTime.UtcNow.AddHours(4);    
            await _context.Blogs.AddAsync(blog);
            await _context.SaveChangesAsync();
            return RedirectToAction("index", new { status, page });

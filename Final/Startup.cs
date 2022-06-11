@@ -45,6 +45,7 @@ namespace Final
                 options.Lockout.AllowedForNewUsers = true;
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+                options.SignIn.RequireConfirmedEmail = true;
             }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
 
 
@@ -56,7 +57,7 @@ namespace Final
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
-            {
+            { 
                 app.UseDeveloperExceptionPage();
             }
 

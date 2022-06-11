@@ -21,6 +21,7 @@ namespace Final.Models
         public IEnumerable<ProductTag> ProductTags { get; set; }
         public Category Category { get; set; }
         public IEnumerable<Basket> Baskets { get; set; }
+        public IEnumerable<Review> Reviews { get; set; }
         public IEnumerable<OrderItem> OrderItems { get; set; }
         [NotMapped]
         public List<int> Counts { get; set; } = new List<int>();
