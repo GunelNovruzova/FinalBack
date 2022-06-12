@@ -10,6 +10,7 @@ namespace Final.ViewModels.Home
     {
         public IEnumerable<Team> Teams { get; set; }
         public IEnumerable<Product> Products { get; set; }
+      
 
     }
 }

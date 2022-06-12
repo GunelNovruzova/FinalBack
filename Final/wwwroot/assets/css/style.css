@@ -17559,3 +17559,12 @@ footer .col-lg-4 span {
     padding: 170px;
     background-color: #030E16;
 }
+.team .allteam .ceo .member-info {
+    background-color: #090C0F;
+    color: #ffffff;
+    padding: 10px 60px;
+    position: absolute;
+    left: 4%;
+    bottom: -30px;
+    transition: 0.4s;
+}
