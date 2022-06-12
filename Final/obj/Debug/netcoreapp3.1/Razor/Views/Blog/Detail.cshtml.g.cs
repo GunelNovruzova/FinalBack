@@ -75,8 +75,15 @@ using Final.ViewModels.Home;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "C:\Users\User\Desktop\PriveFinal\Final\Views\_ViewImports.cshtml"
+using Final.ViewModels.Contact;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f47fc31cf2371151c877d57f39f930af23dffe04", @"/Views/Blog/Detail.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"766b2f73d2badaa5b6031f56b2bd44c73df8949b", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8effd5ebf685575619ec5dbfdc3e6de872a685d7", @"/Views/_ViewImports.cshtml")]
     public class Views_Blog_Detail : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<BlogVM>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "Blog", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -219,7 +226,7 @@ WriteAttributeValue("", 793, Model.Blog.Image, 793, 17, false);
 #line hidden
 #nullable disable
             WriteLiteral("                            <span class=\"reply-btn\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f47fc31cf2371151c877d57f39f930af23dffe0410746", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f47fc31cf2371151c877d57f39f930af23dffe0410925", async() => {
                 WriteLiteral("Change");
             }
             );
@@ -269,7 +276,7 @@ WriteAttributeValue("", 793, Model.Blog.Image, 793, 17, false);
 #line hidden
 #nullable disable
             WriteLiteral("\r\n\r\n                    <div class=\"comment\">\r\n                        <div class=\"comment-form\">\r\n\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f47fc31cf2371151c877d57f39f930af23dffe0413811", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f47fc31cf2371151c877d57f39f930af23dffe0413990", async() => {
                 WriteLiteral(@"
                                 <h5>Leave a Reply</h5>
                                 <div class=""container"">

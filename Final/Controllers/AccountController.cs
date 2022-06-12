@@ -52,6 +52,8 @@ namespace Final.Controllers
 
             string token = Guid.NewGuid().ToString();
             appUser.EmailConfirmationToken = token;
+            string passwordResetToken = Guid.NewGuid().ToString();
+            appUser.PasswordResetToken = passwordResetToken;
             IdentityResult identityResult = await _userManager.CreateAsync(appUser, registerVM.Password);
 
             if (!identityResult.Succeeded)
@@ -140,6 +142,80 @@ namespace Final.Controllers
 
             return BadRequest();
         }
+        public IActionResult ResetPassword() => View();
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword(ResetPasswordVM reset)
+        {
+            if (string.IsNullOrWhiteSpace(reset.Email))
+            {
+                ModelState.AddModelError(string.Empty, "Please bosh qoyma!");
+                return View();
+            }
+            AppUser user = await _userManager.FindByEmailAsync(reset.Email);
+            if (user == null)
+            {
+                ModelState.AddModelError(string.Empty, "Get birinci qeydiyyatdan kec!");
+                return View();
+            }
+            var link = Url.Action(nameof(NewPassword), "Account", new { id = user.Id, token = user.PasswordResetToken }, Request.Scheme, Request.Host.ToString());
+            EmailVM email = _config.GetSection("Email").Get<EmailVM>();
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress(email.SenderEmail, email.SenderName);
+            mail.To.Add(reset.Email);
+            mail.Subject = "Reset Password";
+            mail.Body = $"<a href=\"{link}\">Reset Password</a>";
+            mail.IsBodyHtml = true;
+            using (SmtpClient smtp = new SmtpClient())
+            {
+                smtp.Host = email.Server;
+                smtp.Port = email.Port;
+                smtp.EnableSsl = true;
+                smtp.Credentials = new NetworkCredential(email.SenderEmail, email.Password);
+                smtp.Send(mail);
+            }
+            //SmtpClient smtp = new SmtpClient();
+            //smtp.Host = email.Server;
+            //smtp.Port = email.Port;
+            //smtp.EnableSsl = true;
+            //smtp.Credentials = new NetworkCredential(email.SenderEmail, email.Password);
+            //smtp.Send(mail);
+            return RedirectToAction(nameof(EmailVerification));
+        }
+        public IActionResult NewPassword(ResetPasswordVM reset)
+        {
+            return View(reset);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("NewPassword")]
+        public async Task<IActionResult> NewPasswordPost(ResetPasswordVM reset)
+        {
+            if (reset.Id == null)
+            {
+                return NotFound();
+            }
+            AppUser user = await _userManager.FindByIdAsync(reset.Id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            if (user.PasswordResetToken != reset.Token)
+            {
+                return BadRequest();
+            }
+            var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+            IdentityResult result = await _userManager.ResetPasswordAsync(user, resetToken, reset.Password);
+            if (result.Succeeded)
+            {
+                string passwordResetToken = Guid.NewGuid().ToString();
+                user.PasswordResetToken = passwordResetToken;
+                await _userManager.UpdateAsync(user);
+                return RedirectToAction("Login");
+            }
+            return BadRequest();
+        }
         public IActionResult Login()
         {
             if (User.Identity.IsAuthenticated)
@@ -173,7 +249,7 @@ namespace Final.Controllers
                 ModelState.AddModelError("", "Email Or Password Is InCorrect");
                 return View();
             }
-
+            
             if (signInResult.IsLockedOut)
             {
                 ModelState.AddModelError("", "Your account has blocked");

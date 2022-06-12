@@ -109,5 +109,21 @@ namespace Final.Controllers
             }
               return PartialView("_BasketPartial", basketVMs);
         }
+
+        public async Task<IActionResult> SearchInput(string key)
+        {
+            List<Product> products = new List<Product>();
+            if (key != null)
+            {
+                products = await _context.Products
+                .Where(p => p.Name.Contains(key)
+                || p.Description.Contains(key)
+                || p.Price.ToString().Contains(key)
+                || p.Category.Name.Contains(key)
+                || p.ProductTags.Any(p => p.Tag.Name.Contains(key)))
+                .ToListAsync();
+            }
+            return View(products);
+        }
     }
 }

@@ -62,4 +62,15 @@
             return response.text()
         }).then(data => $(".forbasket").html(data))
     })
+
+    $(document).on("keyup", "#searchBtn", function (e) {
+        e.preventDefault()
+        console.log($(this).val())
+        let url = $("#searchForm").attr("action");
+        fetch(url + "?key=" + $(this).val()).then(res => {
+            return res.text()
+        }).then(data => {
+            $("#productList").html(data)
+        })
+    })
 })
