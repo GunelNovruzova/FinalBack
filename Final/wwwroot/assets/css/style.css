@@ -17568,3 +17568,17 @@ footer .col-lg-4 span {
     bottom: -30px;
     transition: 0.4s;
 }
+.shop-tags {
+    width: 80%;
+    background: #041b26;
+    padding: 25px;
+    margin-top: 40px;
+    height: 320px !important;
+}
+.aboutblogs .blog-tags {
+    width: 80%;
+    background: #041b26;
+    padding: 25px;
+    margin-top: 40px;
+    height: 320px !important;
+}

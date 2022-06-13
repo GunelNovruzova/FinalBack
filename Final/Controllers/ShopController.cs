@@ -57,8 +57,8 @@ namespace Final.Controllers
             ShopVM shopVM = new ShopVM
             {
                 Products = products.ToList(),
-                Categories = await _context.Categories.Include(c => c.Products).Where(c => !c.IsDeleted).Take(4).ToListAsync(),
-                Tags = await _context.Tags.Where(T => !T.IsDeleted).Take(4).ToListAsync()
+                Categories = await _context.Categories.Include(c => c.Products).Where(c => !c.IsDeleted).Take(8).ToListAsync(),
+                Tags = await _context.Tags.Where(T => !T.IsDeleted).Take(12).ToListAsync()
             };
             ViewBag.PageIndex = page;
             ViewBag.PageCount = Math.Ceiling((double)_context.Products.Where(b => !b.IsDeleted).Count() / 6);

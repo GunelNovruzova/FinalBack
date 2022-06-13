@@ -45,8 +45,8 @@ namespace Final.Controllers
             BlogVM blogVM = new BlogVM
             {
                 Blogs = blogs.Skip((page - 1) * 6).Take(3).ToList(),
-                Categories = await _context.Categories.Include(c => c.Blogs).Where(c => !c.IsDeleted).Take(8).ToListAsync(),
-                Tags = await _context.Tags.Where(c => !c.IsDeleted).Take(8).ToListAsync()
+                Categories = await _context.Categories.Include(c => c.Blogs).Where(c => !c.IsDeleted).Take(12).ToListAsync(),
+                Tags = await _context.Tags.Where(c => !c.IsDeleted).Take(12).ToListAsync()
             };
             ViewBag.PageIndex = page;
             ViewBag.PageCount = Math.Ceiling((double)blogs.Count() / 6);

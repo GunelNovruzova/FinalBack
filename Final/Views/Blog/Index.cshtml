@@ -19,7 +19,7 @@
                 {
                     <div class="generalblog">
                         <div class="blogimage">
-                            <a asp-action="Detail" asp-controller="Blog" asp-route-bid="@blog.Id"> <img src="~/assets/img/meals/@blog.Image" alt=""></a>
+                            <a asp-action="Detail" asp-controller="Blog" asp-route-bid="@blog.Id"> <img src="~/assets/img/blogs/@blog.Image" alt=""></a>
                         </div>
                         <div class="blogcontent">
                             <h4>@blog.Title</h4>
@@ -78,7 +78,7 @@
             <div class="col-lg-4 col-sm-12 col-12">
                 <div class="right">
                     <form action="">
-                        <input type="text" placeholder="Serach">
+                        <input type="text" placeholder="Search">
                         <button><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </div>
@@ -87,7 +87,7 @@
                     @foreach (Blog blog in Model.Blogs.Take(3))
                     {
                         <div class="posts">
-                            <img src="~/assets/img/meals/@blog.Image" alt="">
+                            <img src="~/assets/img/blogs/@blog.Image" alt="">
                             <h6>@blog.Title</h6>
                         </div>
                     }
