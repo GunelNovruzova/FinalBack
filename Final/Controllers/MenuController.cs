@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Final.DAL;
+using Final.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +11,15 @@ namespace Final.Controllers
 {
     public class MenuController : Controller
     {
-        public IActionResult Index()
+        private readonly AppDbContext _context;
+        public MenuController(AppDbContext context)
         {
-            return View();
+            _context = context;
+        }
+        public async  Task<IActionResult> Index()
+        {
+            List<Product> products = await _context.Products.Where(p => !p.IsDeleted).ToListAsync();
+            return View(products);
         }
     }
 }

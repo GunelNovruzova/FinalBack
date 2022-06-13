@@ -1,5 +1,6 @@
 ﻿using Final.DAL;
 using Final.Extensions;
+using Final.Helpers;
 using Final.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -196,6 +197,7 @@ namespace Final.Areas.Manage.Controllers
                     return View();
                 }
 
+                Helper.DeleteFile(_env, dbProduct.Image, "assets", "img", "meals");
                 dbProduct.Image = product.ImageFile.CreateFile(_env, "assets", "img", "meals");
 
             }

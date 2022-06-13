@@ -94,55 +94,23 @@
 <section id="navmenu">
     <div class="container-fluid">
         <div class="row">
-            <div class="">
+            <div class="prpodsCat">
                 <ul class="nav-list">
-                    <li class="nav-item">
-                        <a asp-action="Salad" asp-controller="Home" class="animate__animated animate__flash animate__slower animate__infinite infinite red ">
-                            <img src="~/assets/img/Mealstab/Salafs.jpg" alt="That's an image ">
-                            <p class="animate__animated animate__flash animate__slower animate__infinite infinite red ">
-                                Salads
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-action="Snack" asp-controller="Home">
-                            <img src="~/assets/img/Mealstab/Snacks.jpg" alt="That's an image ">
-                            <p>Snacks</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-action="HotSnacks" asp-controller="Home">
-                            <img src="~/assets/img/Mealstab/hot snacks.jpg" alt="That's an image ">
-                            <p>
-                                Hot Snacks and Garnishes
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-action="DryAged" asp-controller="Home">
-                            <img src="~/assets/img/Mealstab/DryAgeds.jpg" alt="That's an image ">
-                            <p>Dry Aged</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-action="Burger" asp-controller="Home">
-                            <img src="~/assets/img/Mealstab/Burgers.jpg" alt="That's an image ">
-                            <p>Burgers</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-action="GrilledMeats" asp-controller="Home">
-                            <img src="~/assets/img/Mealstab/Grilledmeats.jpg" alt="That's an image ">
-                            <p>Grilled meats</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-action="Dessert" asp-controller="Home">
-                            <img src="~/assets/img/Mealstab/Desserts.jpg" alt="That's an image ">
-                            <p>Desserts</p>
-                        </a>
-                    </li>
+                    @foreach (Category category in ViewBag.Category)
+                    {
+                        <li class="nav-item">
+                            <a asp-action="CategoryFilter" asp-controller="Home" asp-route-id="@category.Id" data-id="@category.Id" class="filtercategory">
+                                <img src="~/assets/img/meals/@category.Image" alt="That's an image ">
+                                <p class="animate__animated animate__flash animate__slower animate__infinite infinite red ">
+                                    @category.Name
+                                </p>
+                            </a>
+                        </li>
+                    }
                 </ul>
+                <div class="prod">
+                    @await Html.PartialAsync("_IndexCategoryPartial", Model.Products)
+                </div>
             </div>
         </div>
     </div>
@@ -209,7 +177,21 @@
         </div>
     </div>
 </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-
+<script>
+    $(document).ready(function () {
+        $(".filtercategory").click(function (e) {
+            e.preventDefault();
+            var id = $(this).attr("data-id");
+            console.log(id)
+            fetch("Home/CategoryFilter" + "?id=" + id).then(res => {
+                return res.text()
+            }).then(data => {
+                $(".prod").html(data);
+            })
+        })
+    })
+</script>
 
 

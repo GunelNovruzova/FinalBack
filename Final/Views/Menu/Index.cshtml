@@ -1,4 +1,4 @@
-﻿@model ProductVM
+﻿@model IEnumerable<Product>
 <section class="menu">
     <div class="menu-text">
         <h1>Our Menu</h1>
@@ -13,50 +13,17 @@
             <div class="col-lg-6 col-md-12 col-sm-12 col-12">
                 <div class="lunch-text">
                     <ul>
-                        <li>
-                            <p>
-                                Hummus
-                                <span> -------------------------------------------------------8₼</span>
-                            </p>
-                            <h6>Hummus with pistachio or pressed casserole</h6>
-                        </li>
-                        <li>
-                            <p>
-                                Mushrooms in the oven
-                                <span>-------------------------------7₼</span>
-                            </p>
-                            <h6>Mushrooms, colored peppers, smoked meat and cottage cheese</h6>
-                        </li>
-                        <li>
-                            <p>
-                                Grilled Vegetables
-                                <span>-----------------------------------------6₼</span>
-                            </p>
-                            <h6>Mixed vegetables, spices and pesto sauce</h6>
-                        </li>
-                        <li>
-                            <p>
-                                Potato Souffles
-                                <span>----------------------------------------------6₼</span>
-                            </p>
-                            <h6>Mashed potatoes, various spices, butter and cottage cheese</h6>
-                        </li>
-                        <li>
-                            <p>
-                                Small Potatoes in the oven
+                        @foreach (Product product in Model.Where(p=> p.CategoryId==17).Take(4))
+                        {
+                            <li>
+                                <p>
+                                    @product.Name
+                                    <span> -------------------------------------------------------@product.Price.ToString("F2")₼</span>
+                                </p>
+                                <h6>@product.Description</h6>
+                            </li>
+                        }
 
-                                <span>----------------------------5₼</span>
-                            </p>
-                            <h6>Baked small potatoes, colored peppers, onions and special spices</h6>
-                        </li>
-                        <li>
-                            <p>
-                                Stuffed Meatballs
-
-                                <span>-------------------------------------------4₼</span>
-                            </p>
-                            <h6>Bulgur, minced meat, pistachios, walnuts</h6>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -89,43 +56,16 @@
             <div class="col-lg-6 col-12">
                 <div class="dyraged-text">
                     <ul>
-                        <li>
-                            <p>
-                                Nyu-York Steak
-                                <span> --------------------------------------------------90₼</span>
-                            </p>
-                            <h6>350-400 GR</h6>
-                        </li>
-                        <li>
-                            <p>
-                                Club Steak (national)
-                                <span>------------------------------------------60₼</span>
-                            </p>
-                            <h6>400 - 500 GR</h6>
-                        </li>
-                        <li>
-                            <p>
-                                T-Bon (national)
-                                <span>--------------------------------------------------60₼</span>
-                            </p>
-                            <h6>450-500 GR</h6>
-                        </li>
-                        <li>
-                            <p>
-                                Rib Eye Steak (national)
-                                <span>--------------------------------------60₼</span>
-                            </p>
-                            <h6>350GR</h6>
-                        </li>
-                        <li>
-                            <p>
-                                Dallas Steak (national)
-
-                                <span>-----------------------------------------60₼</span>
-                            </p>
-                            <h6>350-400 GR</h6>
-                        </li>
-
+                        @foreach (Product product in Model.Where(p => p.CategoryId == 2).Take(4))
+                        {
+                            <li>
+                                <p>
+                                    @product.Name
+                                    <span> -------------------------------------------------------@product.Price.ToString("F2")₼</span>
+                                </p>
+                                <h6>@product.Description</h6>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -138,42 +78,17 @@
             <div class="col-lg-6 col-12">
                 <div class="burger-text">
                     <ul>
-                        <li>
-                            <p>
-                                Cheddar Burger
-                                <span> ----------------------------------------------15₼</span>
-                            </p>
-                            <h6>Burger cutlet (200g), cheddar cheese, fried onions and fried potatoes</h6>
-                        </li>
-                        <li>
-                            <p>
-                                Prive Double Burger
-                                <span>---------------------------------------21₼</span>
-                            </p>
-                            <h6>Two-layer burger cutlet, roasted mushrooms, roasted onions, cheddar cheese, and french fries</h6>
-                        </li>
-                        <li>
-                            <p>
-                                Lokum Burger
-                                <span>------------------------------------------------25₼</span>
-                            </p>
-                            <h6>Melted cheddar cheese and fried potatoes on can meat</h6>
-                        </li>
-                        <li>
-                            <p>
-                                Prive Chicken Burger
-                                <span>-------------------------------------13₼</span>
-                            </p>
-                            <h6>Grilled chicken, tomatoes, greens, sauce and french fries</h6>
-                        </li>
-                        <li>
-                            <p>
-                                Mini Burger Trio
+                        @foreach (Product product in Model.Where(p => p.CategoryId == 1).Take(4))
+                        {
+                            <li>
+                                <p>
+                                    @product.Name
+                                    <span> -------------------------------------------------------@product.Price.ToString("F2")₼</span>
+                                </p>
+                                <h6>@product.Description</h6>
+                            </li>
+                        }
 
-                                <span>--------------------------------------------15₼</span>
-                            </p>
-                            <h6>Mini cheddar burger and fried potatoes</h6>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -204,66 +119,17 @@
             <div class="col-lg-6 col-12">
                 <div class="dessert-text">
                     <ul>
-                        <li>
-                            <p>
-                                Walnut Baklava
-                                <span> --------------------------------------------------2₼</span>
-                            </p>
+                        @foreach (Product product in Model.Where(p => p.CategoryId == 7).Take(4))
+                        {
+                            <li>
+                                <p>
+                                    @product.Name
+                                    <span> -------------------------------------------------------@product.Price.ToString("F2")₼</span>
+                                </p>
+                                <h6>@product.Description</h6>
+                            </li>
+                        }
 
-                        </li>
-                        <li>
-                            <p>
-                                Walnut Kadayif
-                                <span>--------------------------------------------------2₼</span>
-                            </p>
-
-                        </li>
-                        <li>
-                            <p>
-                                Peanut Kadayif
-                                <span>--------------------------------------------------4₼</span>
-                            </p>
-
-                        </li>
-                        <li>
-                            <p>
-                                Peanut Baklava
-                                <span>------------------------------------------------2.50₼</span>
-                            </p>
-
-                        </li>
-                        <li>
-                            <p>
-                                Carrot Slice Baklava
-
-                                <span>--------------------------------------------9₼</span>
-                            </p>
-
-                        </li>
-                        <li>
-                            <p>
-                                Sobiyet
-
-                                <span>----------------------------------------------------------------4₼</span>
-                            </p>
-
-                        </li>
-                        <li>
-                            <p>
-                                Special Roll Baklava
-
-                                <span>--------------------------------------------4₼</span>
-                            </p>
-
-                        </li>
-                        <li>
-                            <p>
-                                Green Leaf Baklava
-
-                                <span>---------------------------------------------5₼</span>
-                            </p>
-
-                        </li>
 
                     </ul>
                 </div>

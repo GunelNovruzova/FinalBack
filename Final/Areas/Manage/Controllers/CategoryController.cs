@@ -1,5 +1,6 @@
 ﻿using Final.DAL;
 using Final.Extensions;
+using Final.Helpers;
 using Final.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -71,6 +72,27 @@ namespace Final.Areas.Manage.Controllers
                 return View();
             }
 
+            if (category.ImageFile != null)
+            {
+                if (!category.ImageFile.CheckFileContentType("image/jpeg"))
+                {
+                    ModelState.AddModelError("ImageFile", "The selected image type doesn't match");
+                    return View();
+                }
+
+                if (!category.ImageFile.CheckFileSize(100000))
+                {
+                    ModelState.AddModelError("ImageFile", "The Size of the Selected Image Can Be Maximum 10000 Kb");
+                    return View();
+                }
+
+                category.Image = category.ImageFile.CreateFile(_env, "assets", "img", "meals");
+            }
+            else
+            {
+                ModelState.AddModelError("ImageFile", "Image must be selected");
+                return View();
+            }
             category.CreatedAt = DateTime.UtcNow.AddHours(4);
 
             await _context.Categories.AddAsync(category);
@@ -124,6 +146,24 @@ namespace Final.Areas.Manage.Controllers
                 return View(dbCategory);
             }
 
+            if (category.ImageFile != null)
+            {
+                if (!category.ImageFile.CheckFileContentType("image/jpeg"))
+                {
+                    ModelState.AddModelError("ImageFile", "The selected image type doesn't match");
+                    return View();
+                }
+
+                if (!category.ImageFile.CheckFileSize(100000))
+                {
+                    ModelState.AddModelError("ImageFile", "The Size of the Selected Image Can Be Maximum 10000 Kb");
+                    return View();
+                }
+
+                //Helper.DeleteFile(_env, dbCategory.Image, "assets", "img", "meals");
+                dbCategory.Image = category.ImageFile.CreateFile(_env, "assets", "img", "meals");
+
+            }
             dbCategory.Name = category.Name;
             dbCategory.UpdatedAt = DateTime.UtcNow.AddHours(4);
             await _context.SaveChangesAsync();

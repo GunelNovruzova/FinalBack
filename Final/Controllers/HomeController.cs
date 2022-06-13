@@ -21,11 +21,17 @@ namespace Final.Controllers
         {
             HomeVM homeVM = new HomeVM {
                 Products = await _context.Products
-               .Where(p => !p.IsDeleted).ToListAsync(),
+               .Where(p => !p.IsDeleted && p.CategoryId==2).ToListAsync(),
                 Teams = await _context.Teams.Where(p => !p.IsDeleted).ToListAsync()
             };
-
+            ViewBag.Category = await _context.Categories.Where(p=>p.Image != null).ToListAsync();
             return View(homeVM);
+        }
+        public async Task<IActionResult> CategoryFilter(int? id)
+        {
+            List<Product> product = await _context.Products.Where(p => p.CategoryId == id && !p.IsDeleted).ToListAsync();
+
+            return PartialView("_IndexCategoryPartial",product);
         }
         public async Task<IActionResult> Salad()
         {
