@@ -11,13 +11,13 @@
         <span>Contact Us</span>
     </div>
 </section>
-<section class="booking">
+<section id="contact-form" class="booking">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-5  col-sm-5 form-text">
                 <h3>Contact Us</h3>
-                <form id="contact-form" method="post" asp-action="ContactMessage" asp-controller="contact" enctype="multipart/form-data" class="contact-form">>
-                    <div class="container">
+                <form method="post" asp-action="ContactMessage" asp-controller="Contact" enctype="multipart/form-data" id="contact-form">
+                    <div class="container" id="contact-form">
                         <div class="row">
                             <div class="col-lg-6">
                                 <input asp-for="Contact.Name" type="text" placeholder="Name">
@@ -29,10 +29,10 @@
                                 <input asp-for="Contact.Email" type="email" name="" id="" placeholder="Email">
                             </div>
                             <div class="col-lg-6">
-                                <input asp-for="Contact.Message" type="text" name="" id="" placeholder="Message">
+                                <input asp-for="Contact.Message" class="form-control2" type="text" name="" id="" placeholder="Message">
                             </div>
                             <div class="col-lg-12">
-                                <button type="submit">Book Now</button>
+                                <button type="submit">Send your Message</button>
                             </div>
                         </div>
                     </div>

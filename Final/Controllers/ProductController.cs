@@ -1,6 +1,7 @@
 ﻿using Final.DAL;
 using Final.Models;
 using Final.ViewModels.Basket;
+using Final.ViewModels.Products;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -108,6 +109,48 @@ namespace Final.Controllers
                 await _context.SaveChangesAsync();
             }
               return PartialView("_BasketPartial", basketVMs);
+        }
+
+        public async Task<IActionResult> AddProdReview(string Message, int star, int? id)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return PartialView("_LoginFormPartial");
+            }
+            if (id == null) return View();
+            Review review = new Review();
+            AppUser appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name && !u.IsAdmin);
+            review.Email = appUser.Email;
+            review.Name = appUser.UserName;
+            ProductVM productVM = new ProductVM()
+            {
+                Product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id),
+                Reviews = await _context.Reviews.Where(p => p.ProductId == id && !p.IsDeleted).ToListAsync()
+            };
+            if (Message == null || Message == "" || Message.Trim() == null || Message.Trim() == "")
+            {
+                return PartialView("_ReviewPartial", productVM);
+            }
+
+            review.Message = Message.Trim();
+            if (star == 0 || star < 0 || star > 5)
+            {
+                review.Star = 1;
+            }
+            else
+            {
+                review.Star = star;
+            }
+            review.ProductId = (int)id;
+            review.CreatedAt = DateTime.UtcNow.AddHours(4);
+            await _context.Reviews.AddAsync(review);
+            await _context.SaveChangesAsync();
+            productVM = new ProductVM()
+            {
+                Product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id),
+                Reviews = await _context.Reviews.Where(p => p.ProductId == id && !p.IsDeleted).ToListAsync()
+            };
+            return PartialView("_AddReviewForProductPartial", productVM);
         }
 
         public async Task<IActionResult> SearchInput(string key)

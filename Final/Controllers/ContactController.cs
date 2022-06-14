@@ -35,37 +35,40 @@ namespace Final.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ContactMessage(Contact contact)
+        public async Task<IActionResult> ContactMessage(ContactVM contactVM)
         {
+            
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("login", "account");
             }
 
+
             AppUser appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name && !u.IsAdmin);
 
 
-            if (string.IsNullOrWhiteSpace(contact.Name))
+            if (string.IsNullOrWhiteSpace(contactVM.Contact.Name))
             {
                 ModelState.AddModelError("Name", "There should be no gaps");
                 return View();
             }
 
-            if (string.IsNullOrWhiteSpace(contact.Message))
+            if (string.IsNullOrWhiteSpace(contactVM.Contact.Message))
             {
                 ModelState.AddModelError("Message", "There should be no gaps");
                 return View();
             }
-            if (string.IsNullOrWhiteSpace(contact.Email))
+            if (string.IsNullOrWhiteSpace(contactVM.Contact.Email))
             {
                 ModelState.AddModelError("Email", "There should be no gaps");
                 return View();
             }
-            contact.MainEmail = appUser.Email;
+            contactVM.Contact.MainEmail = appUser.Email;
+            contactVM.Contact.Message = contactVM.Contact.Message;
 
-            contact.CreatedAt = DateTime.UtcNow.AddHours(4);
+            contactVM.Contact.CreatedAt = DateTime.UtcNow.AddHours(4);
 
-            await _context.Contacts.AddAsync(contact);
+            await _context.Contacts.AddAsync(contactVM.Contact);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("index");

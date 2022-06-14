@@ -10,5 +10,6 @@ namespace Final.ViewModels.Contact
     {
        public Setting Setting { get; set; }
        public Final.Models.Contact Contact { get; set; }
-     }
+        //public string Message { get; set; }
+    }
 }

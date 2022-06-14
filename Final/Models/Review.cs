@@ -16,8 +16,10 @@ namespace Final.Models
         public string Message { get; set; }
         [Required, Range(1, 5)]
         public int Star { get; set; }
-        public int BlogId { get; set; }
+        public Nullable<int> BlogId { get; set; }
         public Blog Blog { get; set; }
+        public Nullable<int> ProductId { get; set; }
+        public Product Product { get; set; }
         public string AppUserId { get; set; }
         public AppUser AppUser { get; set; }
     }
