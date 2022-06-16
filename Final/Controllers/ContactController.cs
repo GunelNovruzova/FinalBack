@@ -28,14 +28,14 @@ namespace Final.Controllers
             Contact contact = _context.Contacts.FirstOrDefault();
             ContactVM contactVM = new ContactVM()
             {
-                Setting = setting,
-                Contact = contact
+                Setting = setting
             };
             return View(contactVM);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ContactMessage(ContactVM contactVM)
+        public async Task<IActionResult> ContactMessage(Contact contact)
         {
             
             if (!User.Identity.IsAuthenticated)
@@ -47,28 +47,27 @@ namespace Final.Controllers
             AppUser appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name && !u.IsAdmin);
 
 
-            if (string.IsNullOrWhiteSpace(contactVM.Contact.Name))
+            if (string.IsNullOrWhiteSpace(contact.Name))
             {
                 ModelState.AddModelError("Name", "There should be no gaps");
                 return View();
             }
 
-            if (string.IsNullOrWhiteSpace(contactVM.Contact.Message))
+            if (string.IsNullOrWhiteSpace(contact.Message))
             {
                 ModelState.AddModelError("Message", "There should be no gaps");
                 return View();
             }
-            if (string.IsNullOrWhiteSpace(contactVM.Contact.Email))
+            if (string.IsNullOrWhiteSpace(contact.Email))
             {
                 ModelState.AddModelError("Email", "There should be no gaps");
                 return View();
             }
-            contactVM.Contact.MainEmail = appUser.Email;
-            contactVM.Contact.Message = contactVM.Contact.Message;
+            contact.MainEmail = appUser.Email;
 
-            contactVM.Contact.CreatedAt = DateTime.UtcNow.AddHours(4);
+            contact.CreatedAt = DateTime.UtcNow.AddHours(4);
 
-            await _context.Contacts.AddAsync(contactVM.Contact);
+            await _context.Contacts.AddAsync(contact);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("index");

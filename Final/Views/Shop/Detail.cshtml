@@ -3,13 +3,15 @@
     ViewData["Title"] = "Detail";
     string tags = "";
 }
-
-
-
+<style>
+    .rating .icons .fa-star:hover{
+        color:#FFC107;
+    }
+</style>
 <section class="shop">
     <div class="shop-text">
         <h1>Shop</h1>
-        <a href="">Home </a>
+        <a href="">Home</a>
         <i class="fa-solid fa-angle-right"></i>
         <span>Products</span>
     </div>
@@ -35,13 +37,14 @@
                     <a asp-controller="Product" asp-action="AddBasket" asp-route-id="@Model.Product.Id" class="addtocart" style="position: static; opacity: 1; visibility: visible;">Add to cart</a>
                 </div>
                 <h4>Category:<span>@Model.Product.Category.Name</span></h4>
-                <h4>Tag:<span>
-                    @(tags = string.Join(", ", Model.Product.ProductTags.Select(p => p.Tag != null ? p.Tag.Name : "")))
-                </span></h4>
+                <h4>
+                    Tag:<span>
+                        @(tags = string.Join(", ", Model.Product.ProductTags.Select(p => p.Tag != null ? p.Tag.Name : "")))
+                    </span>
+                </h4>
             </div>
         </div>
     </div>
-
 </section>
 
 <section class="allreviews">
@@ -65,12 +68,21 @@
             <div class="reviewtable">
                 <p>1 review for @Model.Product.Name</p>
                 <div class="reviewtext">
-
-                    <p>Themechampion – <span>April 13, 2022</span></p>
-                    <h5>Delicious</h5>
+                    <div class="com">
+                        <p>Themechampion – <span>April 13, 2022</span></p>
+                        <h5>Delicious</h5>
+                        <div class="icons" style="color:#FFC107;">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
                 </div>
+
                 <h3>Add a Review</h3>
-                <form action="">
+                <form method="post" enctype="multipart/form-data">
                     <label for="Name">Name</label>
                     <br>
                     <input type="text">
@@ -79,15 +91,37 @@
                     <br>
                     <input type="text">
                     <br>
-                    <label for="Name">Your Review</label>
-                    <br>
+
+                    <label for="Message">Your Review</label>
+                    <br />
                     <input type="text">
-                    <br>
+                    <br />
+                    <label for="Rating">Your Rating</label>
+                    <br />
+                    <div class="rating">
+                        <div class="icons" style="color:#F3F3F3; margin-left:30px;">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        @*<input type="radio" id="star5" class="star" name="rate" value="5" />
+            <label for="star5" title="text">5 stars</label>
+            <input type="radio" id="star4" class="star" name="rate" value="4" />
+            <label for="star4" title="text">4 stars</label>
+            <input type="radio" id="star3" class="star" name="rate" value="3" />
+            <label for="star3" title="text">3 stars</label>
+            <input type="radio" id="star2" class="star" name="rate" value="2" />
+            <label for="star2" title="text">2 stars</label>
+            <input type="radio" id="star1" class="star" name="rate" value="1" />
+            <label for="star1" title="text">1 star</label>*@
+                    </div>
+                    <br />
                     <button type="submit">Sumbit</button>
                 </form>
             </div>
         </div>
-
     </div>
 </section>
 <section class="related">
@@ -110,31 +144,7 @@
                     </div>
                 </div>
             }
-
-            @*<div class="col-lg-4">
-            <div class="product-related">
-                <div class="imgcart">
-                    <a href="shopdetail.html"><img src="assets/img/meals/doubleburger.jpg" alt=""></a>
-                    <a href="" class="addtocart">Add to cart</a>
-                </div>
-            </div>
-            <div class="product-text">
-                <h4>Prive Double Burger</h4>
-                <span>21₼</span>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="product-related">
-                <div class="imgcart">
-                    <a href="shopdetail.html"><img src="assets/img/meals/lokumburger.jpg" alt=""></a>
-                    <a href="" class="addtocart">Add to cart</a>
-                </div>
-            </div>
-            <div class="product-text">
-                <h4>Lokum Burger</h4>
-                <span>21₼</span>
-            </div>
-        </div>*@
         </div>
     </div>
 </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

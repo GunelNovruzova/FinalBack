@@ -1,0 +1,25 @@
+﻿@model Contact
+
+<form method="post" asp-controller="contact" asp-action="ContactMessage">
+    <div class="container" >
+        <div class="row">
+            <div class="col-lg-6">
+                <input asp-for="Name" placeholder="Name">
+            </div>
+            <div class="col-lg-6">
+                <input asp-for="Phone" placeholder="Phone">
+            </div>
+            <div class="col-lg-6">
+                <input asp-for="Email" placeholder="Email">
+            </div>
+            <div class="col-lg-6">
+                <input asp-for="Message" class="form-control2" placeholder="Message">
+            </div>
+            <div class="col-lg-12">
+                <button type="submit">Send your Message</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+

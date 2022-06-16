@@ -11,33 +11,12 @@
         <span>Contact Us</span>
     </div>
 </section>
-<section id="contact-form" class="booking">
+<section  class="booking">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-5  col-sm-5 form-text">
                 <h3>Contact Us</h3>
-                <form method="post" asp-action="ContactMessage" asp-controller="Contact" enctype="multipart/form-data" id="contact-form">
-                    <div class="container" id="contact-form">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <input asp-for="Contact.Name" type="text" placeholder="Name">
-                            </div>
-                            <div class="col-lg-6">
-                                <input asp-for="Contact.Phone" type="number" placeholder="Phone">
-                            </div>
-                            <div class="col-lg-6">
-                                <input asp-for="Contact.Email" type="email" name="" id="" placeholder="Email">
-                            </div>
-                            <div class="col-lg-6">
-                                <input asp-for="Contact.Message" class="form-control2" type="text" name="" id="" placeholder="Message">
-                            </div>
-                            <div class="col-lg-12">
-                                <button type="submit">Send your Message</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </form>
+                @await Html.PartialAsync("_ContatctCreatePartial", Model.Contact) 
             </div>
             <div class="col-lg-6 col-md-7 col-sm-7">
                 <h5>Our Contacts</h5>
