@@ -29,6 +29,5 @@ namespace Final.Models
         public IFormFile ImageFile { get; set; }
         [NotMapped]
         public List<int> TagIds { get; set; } = new List<int>();
-
     }
 }

@@ -75,27 +75,22 @@ namespace Final.Controllers
 
             Product product = await _context.Products
                 .Include(p => p.ProductTags).ThenInclude(pt => pt.Tag)
+                .Include(p=>p.Reviews)
                 .FirstOrDefaultAsync(p => p.Id == (int)pid);
 
             if (product == null) return NotFound();
-
             ProductVM productVM = new ProductVM()
             {
                 Product = product,
-
                 Products = await _context.Products
                 .Where(p => p.CategoryId == product.CategoryId)
                 .Take(3)
                 .OrderByDescending(p => p.CreatedAt)
-                .ToListAsync()
+                .ToListAsync(),
+                Reviews = await _context.Reviews.Where(p=>p.ProductId == product.Id).ToListAsync()
             };
-
-
             return View(productVM);
         }
-
-
-
 
     }
 }

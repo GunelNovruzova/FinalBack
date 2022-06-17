@@ -90,11 +90,8 @@ namespace Final.Controllers
 
             review.Email = appUser.Email;
             review.Name = appUser.UserName;
-
             int bid = (int)rid;
-
             if (review.Message == null || review.Email == null || review.Name == null) return RedirectToAction("detail", new { bid });
-
             if (review.Star == null || review.Star < 0 || review.Star > 5)
             {
                 review.Star = 1;
