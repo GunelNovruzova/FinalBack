@@ -15,10 +15,13 @@ namespace Final.Models
         [StringLength(255), Required]
         public string Phone { get; set; }
         [StringLength(255), Required]
+        
         public string Address { get; set; }
         public string WorkHours { get; set; }
         public string ContactUsTitle { get; set; }
         public string ContactUsDescription { get; set; }
+        public string Facebook { get; set; }
+        public string Instagram { get; set; }
         [NotMapped]
         public IFormFile LogoImage { get; set; }
     }

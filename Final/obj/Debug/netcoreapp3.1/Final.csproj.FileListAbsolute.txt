@@ -197,13 +197,6 @@ C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Order
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_OrderPartial.cshtml.g.cs
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Detail.cshtml.g.cs
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shop\Detail.cshtml.g.cs
-C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Home\Salad.cshtml.g.cs
-C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Home\Snack.cshtml.g.cs
-C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Home\HotSnacks.cshtml.g.cs
-C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Home\DryAged.cshtml.g.cs
-C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Home\Burger.cshtml.g.cs
-C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Home\GrilledMeats.cshtml.g.cs
-C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Home\Dessert.cshtml.g.cs
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Account\EmailVerification.cshtml.g.cs
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Account\VerifyEmail.cshtml.g.cs
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Edit.cshtml.g.cs
@@ -220,3 +213,5 @@ C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Areas\Manag
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_IndexCategoryPartial.cshtml.g.cs
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ContatctCreatePartial.cshtml.g.cs
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ReviewStarPartial.cshtml.g.cs
+C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Setting\Detail.cshtml.g.cs
+C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Setting\Update.cshtml.g.cs

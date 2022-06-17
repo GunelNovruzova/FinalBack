@@ -20,15 +20,12 @@
             </div>
             <div class="col-lg-6 col-md-7 col-sm-7">
                 <h5>Our Contacts</h5>
-                <h2>Get In Touch</h2>
-                <p>Get in touch to discuss your employee wellbeing needs <br> today. Please give us a call, drop us an email or fill out the <br> contact form and we’ll get back to you.</p>
+                <h2>@Model.Setting.ContactUsTitle</h2>
+                <p>@Html.Raw(Model.Setting.ContactUsDescription)</p>
                 <div class="contactdetails">
                     <i class="fa-solid fa-location-dot"></i>
                     <p>
-                        We are Here:
-                        <br>
-                        14/a Khagani Street,
-                        Baku Azerbaijan
+                       @Model.Setting.Address
                     </p>
                 </div>
                 <div class="contactdetails">
@@ -36,7 +33,7 @@
                     <p>
                         Phone Us:
                         <br>
-                        (+994) 12 598 05 55
+                        @Model.Setting.Phone
                     </p>
                 </div>
                 <div class="contactdetails">
@@ -44,7 +41,7 @@
                     <p>
                         Mail Us:
                         <br>
-                        Prive@mail.ru
+                       @Model.Setting.Email
                     </p>
                 </div>
             </div>

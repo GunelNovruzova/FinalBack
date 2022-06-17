@@ -182,7 +182,7 @@
 
         </div>
 
-        <div id="Description" class="tabcontent ">
+        <div id="Description" class="tabcontent">
             <h4>Description</h4>
             <p>@Model.Product.Description</p>
         </div>
@@ -191,7 +191,7 @@
             <div class="reviewtable">
                 <p>1 review for @Model.Product.Name</p>
 
-                <div class="reviewtext">
+                <div class="all-reviews">
                     @await Html.PartialAsync("_ReviewStarPartial", Model)
                 </div>
 
@@ -265,7 +265,7 @@
             fetch("../Product/Review" + "?rid=" + id + "&message=" + message+"&star="+star).then(res => {
                 return res.text()
             }).then(data => {
-                $(".reviewtext").html(data);
+                $(".all-reviews").html(data);
             })
         })
     })

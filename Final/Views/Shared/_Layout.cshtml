@@ -3,6 +3,7 @@
 @inject UserManager<AppUser> userManager;
 @inject LayoutService layoutService
 @{
+    Setting setting = await layoutService.GetSetting();
     AppUser appUser = null;
     if (User.Identity.IsAuthenticated)
     {
@@ -45,7 +46,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-2 col-md-2 col-sm-2">
-                        <a href=""><img src="~/assets/img/logo/prive logo.png" alt=""></a>
+                        <a href=""><img src="~/assets/img/logo/@setting.Logo" alt=""></a>
                     </div>
                     <div class="col-lg-8 col-md-2 col-sm-8">
                         <div class="header-text">
@@ -101,7 +102,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-10">
-                    <a href=""><img src="~/assetsassets/img/logo/prive logo.png" alt=""></a>
+                    <a href=""><img src="~/assetsassets/img/logo/@setting.Logo" alt=""></a>
                 </div>
                 <div class="col-2">
                     <div class="side-menu">
@@ -116,7 +117,7 @@
     <div class="nav-bar">
         <div class="nav-barinner">
             <div class="box1 d-flex">
-                <img src="~/assetsassets/img/logo/prive logo.png" alt="">
+                <img src="~/assetsassets/img/logo/@setting.Logo" alt="">
 
             </div>
             <ul>
@@ -140,26 +141,32 @@
     @*</div>*@
     <footer>
         <div class="footer-text">
-            <a href=""> <img src="~/assets/img/logo/prive logo.png" alt=""></a>
+            <a href=""> <img src="~/assets/img/logo/@setting.Logo" alt=""></a>
         </div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-4  col-12 col-md-4">
                     <h3>Our Address</h3>
-                    <p>14/a Khagani Street, <br> Baku Azerbaijan</p>
-                    <a href=""><i class="fa-brands fa-facebook"></i></a>
-                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                    <p>@setting.Address</p>
+                    @if (setting.Facebook != null)
+                    {
+                        <a href="@setting.Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    }
+                    @if (setting.Facebook != null)
+                    {
+                        <a href="@setting.Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    }
                 </div>
 
                 <div class="col-lg-4 col-12 col-md-4">
                     <h3>Order Online</h3>
                     <p>If you want to book a table, You  <br> can contact with our staff</p>
-                    <span>(+994) 12 598 05 55</span>
+                    <span>@setting.Phone</span>
                 </div>
 
                 <div class="col-lg-4 col-12 col-md-4">
                     <h3>Our Hours</h3>
-                    <p><span>Mon-Fri</span> 09:00 AM - 00:00 PM</p>
+                    <p><span>@setting.WorkHours</span></p>
                 </div>
             </div>
         </div>
