@@ -1,6 +1,7 @@
 ﻿using Final.DAL;
 using Final.Models;
 using Final.ViewModels.Home;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,6 +14,7 @@ namespace Final.Controllers
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly UserManager<AppUser> _userManager;
         public HomeController(AppDbContext context)
         {
             _context = context;
@@ -33,7 +35,7 @@ namespace Final.Controllers
 
             return PartialView("_IndexCategoryPartial",product);
         }
-      
 
+        
     }
 }

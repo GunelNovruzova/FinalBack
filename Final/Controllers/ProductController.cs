@@ -2,6 +2,8 @@
 using Final.Models;
 using Final.ViewModels.Basket;
 using Final.ViewModels.Products;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -110,16 +112,14 @@ namespace Final.Controllers
             }
               return PartialView("_BasketPartial", basketVMs);
         }
-
         public async Task<IActionResult> Review(int? rid, string Message,int star = 1)
         {
             if (!User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("login", "account");
+                return Json(0);
             }
             if (rid == null) return View();
-
-            Review review = new Review();
+            Review review = new Review(); 
 
             AppUser appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name && !u.IsAdmin);
             review.Email = appUser.Email;
@@ -138,7 +138,7 @@ namespace Final.Controllers
                 review.Star = 1;
             }
             review.ProductId = (int)rid;
-            review.CreatedAt = DateTime.UtcNow.AddHours(4);
+            review.CreatedAt = DateTime.UtcNow.AddHours(4); 
             await _context.Reviews.AddAsync(review);
             await _context.SaveChangesAsync();
              productVM = new ProductVM()

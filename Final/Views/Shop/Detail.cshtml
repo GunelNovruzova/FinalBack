@@ -196,7 +196,7 @@
                 </div>
 
                 <h3>Add a Review</h3>
-                <form >
+                <form>
                     <label for="Name">Name</label>
                     <br>
                     <input id="Name" name="Name">
@@ -221,7 +221,7 @@
                         <input type="radio" id="star1" name="rating" value="1" class="visuallyhidden" /><label for="star1" title="Sucks big time">★</label>
                     </div>
                     <br />
-                    <a href="#" class="StarRate" data-id="@Model.Product.Id">Sumbit</a>
+                    <a href="#" class="StarRate" data-id="@Model.Product.Id">Submit</a>
                 </form>
             </div>
         </div>
@@ -262,9 +262,14 @@
             e.preventDefault();
             var id = $(this).attr("data-id");
             var message = $("#Message").val();
-            fetch("../Product/Review" + "?rid=" + id + "&message=" + message+"&star="+star).then(res => {
+            fetch("../Product/Review" + "?rid=" + id + "&message=" + message + "&star=" + star).then(res => {
                 return res.text()
             }).then(data => {
+                console.log(data)
+                if (data == 0) {
+                    window.location = window.location.origin + "/Account/Login";
+                    return;
+                }
                 $(".all-reviews").html(data);
             })
         })

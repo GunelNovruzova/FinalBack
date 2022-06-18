@@ -17582,3 +17582,14 @@ footer .col-lg-4 span {
     margin-top: 40px;
     height: 320px !important;
 }
+.reserve {
+    background: transparent;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    margin-top: 20px;
+    width: 250px;
+    height: 40px;
+    color: #b1b5b7;
+    outline: none;
+}

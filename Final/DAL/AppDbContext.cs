@@ -25,6 +25,7 @@ namespace Final.DAL
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Table> Tables { get; set; }
 
 
     }

@@ -1,4 +1,4 @@
-﻿
+﻿@model TableVM
 @{
     ViewData["Title"] = "Index";
 }
@@ -11,47 +11,23 @@
         <span>Book a Table</span>
     </div>
 </section>
-
 <section class="booking">
     <div class="container">
         <div class="row">
-
-            <div class="col-lg-8 form-text">
+       <div class="col-lg-8 form-text">
                 <h3>Book A Table</h3>
-                <form action="">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <input type="text" placeholder="Name">
-                                <input type="text" placeholder="Person">
-                                <br>
-                                <input type="time" placeholder="01.00am">
-                            </div>
-                            <div class="col-lg-6">
-                                <input type="number" placeholder="Phone">
-                                <input type="email" placeholder="Email ID">
-
-                                <input type="date" placeholder="mm/dd/yy">
-                            </div>
-                            <div class="col-lg-12">
-                                <button type="submit">Book Now</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </form>
+             @await Html.PartialAsync("_TableCreatePartial", Model.Table)
             </div>
             <div class="col-lg-4">
                 <h5>Our Contacts</h5>
-                <h2>Get In Touch</h2>
-                <p>Get in touch to discuss your employee wellbeing needs <br> today. Please give us a call, drop us an email or fill out the <br> contact form and we’ll get back to you.</p>
+                <h2>@Model.Setting.ContactUsTitle</h2>
+                <p>@Html.Raw(Model.Setting.ContactUsDescription)</p>
                 <div class="contactdetails">
                     <i class="fa-solid fa-location-dot"></i>
                     <p>
                         We are Here:
                         <br>
-                        14/a Khagani Street,
-                        Baku Azerbaijan
+                       @Html.Raw(Model.Setting.Address)
                     </p>
                 </div>
                 <div class="contactdetails">
@@ -59,7 +35,7 @@
                     <p>
                         Phone Us:
                         <br>
-                        (+994) 12 598 05 55
+                        @Model.Setting.Phone
                     </p>
                 </div>
                 <div class="contactdetails">
@@ -67,7 +43,7 @@
                     <p>
                         Mail Us:
                         <br>
-                        Prive@mail.ru
+                        @Model.Setting.Phone
                     </p>
                 </div>
             </div>
