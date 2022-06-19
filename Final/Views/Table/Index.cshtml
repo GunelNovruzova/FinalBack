@@ -14,9 +14,13 @@
 <section class="booking">
     <div class="container">
         <div class="row">
-       <div class="col-lg-8 form-text">
+            <div class="col-lg-8 form-text">
                 <h3>Book A Table</h3>
-             @await Html.PartialAsync("_TableCreatePartial", Model.Table)
+                @if (TempData.ContainsKey("error"))
+                {
+                    <span>@TempData["error"]</span>
+                }
+                @await Html.PartialAsync("_TableCreatePartial", Model.Table)
             </div>
             <div class="col-lg-4">
                 <h5>Our Contacts</h5>

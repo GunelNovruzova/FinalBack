@@ -23,7 +23,7 @@ namespace Final.Controllers
         {
             HomeVM homeVM = new HomeVM {
                 Products = await _context.Products
-               .Where(p => !p.IsDeleted && p.CategoryId==2).ToListAsync(),
+               .Where(p => !p.IsDeleted).ToListAsync(),
                 Teams = await _context.Teams.Where(p => !p.IsDeleted).ToListAsync()
             };
             ViewBag.Category = await _context.Categories.Where(p=>p.Image != null).ToListAsync();

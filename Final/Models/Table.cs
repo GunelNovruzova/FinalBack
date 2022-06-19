@@ -12,13 +12,12 @@ namespace Final.Models
         public string Name { get; set; }
         [EmailAddress, Required]
         public string Email { get; set; }
-        public string MainEmail { get; set; }
+        public string MainEmail { get; set; } 
         public string Phone { get; set; }
 
         [Required]
-     
-        public string Person { get; set; }
-        public DateTime Time { get; set; }
-        public DateTime Day { get; set; }
+        public int Person { get; set; }
+        public DateTime Date { get; set; }
+
     }
 }
