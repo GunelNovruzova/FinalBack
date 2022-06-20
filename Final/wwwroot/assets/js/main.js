@@ -29,6 +29,43 @@ $(document).ready(function () {
 		$(".ship-to-different").slideToggle("100");
 	});
 });
+$(window).scroll(function () {
+    var header = $('.header'),
+        scroll = $(window).scrollTop();
+
+    if (scroll >= 150) {
+        header.css({
+            'position': 'fixed',
+            'top': '0',
+            'left': '0',
+            'right': '0',
+            'z-index': '99999'
+        });
+    } else {
+        header.css({
+            'position': 'relative'
+        });
+    }
+});
+
+// to top function
+document.querySelector(".topBtn").addEventListener("click", function () {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+})
+function ScrollToTop() {
+    let scBtn = document.querySelector(".toTopBtn");
+    if (window.scrollY > 550) {
+        scBtn.style.opacity = "1"
+        scBtn.style.visibility = "visible"
+    }
+    else {
+        scBtn.style.opacity = "0"
+        scBtn.style.visibility = "hidden"
+    }
+}
 AOS.init();
 
 

@@ -17611,3 +17611,31 @@ footer .col-lg-4 span {
     height: 217px;
     width: 568px;
 }
+.toTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+   /* opacity: 0;
+    visibility: hidden;*/
+}
+
+    .toTopBtn .topBtn {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        border-radius: 50%;
+        border: 1px solid #7E7E7E;
+        width: 32px;
+        height: 32px;
+        background-color: white;
+    }
+
+        .toTopBtn .topBtn i {
+            color: #7E7E7E;
+        }
