@@ -17600,3 +17600,14 @@ footer .col-lg-4 span {
     color: #b1b5b7;
     outline: none;
 }
+.forsearch{
+    position:relative;
+}
+#productList {
+    position: absolute;
+    left: 29%;
+    top: 58%;
+    background-color: transparent;
+    height: 217px;
+    width: 568px;
+}
