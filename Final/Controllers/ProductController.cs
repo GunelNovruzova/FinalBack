@@ -161,7 +161,7 @@ namespace Final.Controllers
                 || p.ProductTags.Any(p => p.Tag.Name.Contains(key)))
                 .ToListAsync();
             }
-            return View(products);
+            return PartialView("_ProductListPartial", products);
         } 
     }
 }

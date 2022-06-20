@@ -22,9 +22,10 @@ namespace Final.Controllers
         public async Task<IActionResult> Index()
         {
             HomeVM homeVM = new HomeVM {
-                Products = await _context.Products
-               .Where(p => !p.IsDeleted).ToListAsync(),
+                Products = await _context.Products.Where(p => !p.IsDeleted).ToListAsync(),
                 Teams = await _context.Teams.Where(p => !p.IsDeleted).ToListAsync()
+              //Tables = await _context.Tables.FirstOrDefaultAsync()
+
             };
             ViewBag.Category = await _context.Categories.Where(p=>p.Image != null).ToListAsync();
             return View(homeVM);

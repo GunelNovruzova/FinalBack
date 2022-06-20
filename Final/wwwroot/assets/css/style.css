@@ -215,24 +215,31 @@ header .booktable a:hover {
   width: 360px;
   height: 400px;
 }
-.gallery .images .box .overlay {
-  position: absolute;
-  top: 6%;
-  left: 10%;
-  background-color: rgba(110, 66, 193, 0.5215686275);
-  width: 75%;
-  height: 89%;
-  z-index: 9;
-  opacity: 0;
-  transition: 0.4s;
-}
+    .gallery .images .box .overlay {
+        position: absolute;
+        top: 6%;
+        left: 10%;
+        background-color: rgba(110, 66, 193, 0.5215686275);
+        width: 75%;
+        height: 89%;
+        z-index: 9;
+        opacity: 0;
+        transition: 0.4s;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        background-color: #e7d6c195;
+        width: 97%;
+        height: 100%;
+    }
 .gallery .images .box .overlay p {
   position: absolute;
   text-align: center;
   left: 50%;
   color: black;
   transform: translate(-50%, -50%);
-  font-size: 20px;
+  font-size: 25px;
   bottom: 0;
   transition: 0.4s;
   opacity: 0;

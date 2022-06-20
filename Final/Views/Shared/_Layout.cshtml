@@ -173,12 +173,15 @@
     </footer>
     <section class="forsearch">
         <div class="searchinput">
-            <form action="">
-                <input type="search" placeholder="Search">
+            <form method="post" enctype="multipart/form-data" id="searchForm" asp-controller="product" asp-action="SearchInput">
+                <input type="search" id="searchBtn" placeholder="Search">
                 <button class="searchbutton"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
             <div class="markbutton">
                 <i class="fa-solid fa-xmark mark"></i>
+            </div>
+            <div id="productList" class="row">
+
             </div>
         </div>
     </section>

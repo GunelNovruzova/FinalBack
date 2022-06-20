@@ -1,0 +1,84 @@
+﻿@model List<Product>
+@{ int count = 0; }
+<style>
+    .product-card-search {
+        background-color: white;
+        padding: 0px;
+    }
+
+        .product-card-search .search-products {
+            flex-direction: row;
+            border-bottom: 1px solid #80808038;
+            padding: 10px 0;
+        }
+
+            .product-card-search .search-products .img-a {
+                padding: 0;
+                width: 10%;
+            }
+
+            .product-card-search .search-products img {
+                padding: 0;
+                width: 10%;
+            }
+
+            .product-card-search .search-products .content-s {
+                padding: 0;
+                align-items: start;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+                .product-card-search .search-products .content-s .name {
+                    color: black;
+                    font-weight: 600;
+                    font-family: 'Text Me One';
+                    font-size: 16px;
+                }
+
+                .product-card-search .search-products .content-s .prices {
+                    display: flex;
+                    justify-content: start;
+                    align-items: center;
+                }
+
+                .product-card-search .search-products .content-s h3 {
+                    font-size: 14px;
+                    font-weight: 200;
+                    margin: 0px;
+                }
+
+                .product-card-search .search-products .content-s del {
+                    font-size: 14px;
+                    font-weight: 400;
+                    margin: 0 10px;
+                    color: #80808091;
+                    font-family: Text Me One, sans-serif;
+                    font-weight: 700;
+                }
+</style>
+@foreach (Product product in Model.Take(6))
+{
+
+    count++;
+
+@if (count <= 6)
+{
+<div class="product-card-search col-lg-6">
+    <div class="search-products row">
+        <a asp-controller="product"
+           asp-action="detail"
+           asp-route-id="@product.Id"
+          
+           class="img-a">
+            <img src="~/assets/img/meals/@product.Image" alt="">
+        </a>
+        <div class="content-s col-lg-9">
+            <a href="~/" class="name">@product.Name</a>
+        </div>
+    </div>
+</div>}
+}
+            
+
