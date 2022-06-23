@@ -148,6 +148,24 @@ namespace Final.Controllers
             };
             return PartialView("_ReviewStarPartial",productVM);
         }
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null) return BadRequest();
+
+            Review review = await _context.Reviews
+                .FirstOrDefaultAsync(r => r.Id == id);
+            if (review == null) return NotFound();
+
+            review.IsDeleted = true;
+            review.DeletedAt = DateTime.UtcNow.AddHours(4);
+            await _context.SaveChangesAsync();
+            ProductVM productVM = new ProductVM()
+            {
+                Product = await _context.Products.FirstOrDefaultAsync(P => P.Id == review.ProductId),
+                Reviews = await _context.Reviews.Where(p => p.ProductId == review.ProductId && !p.IsDeleted).ToListAsync()
+            };
+            return PartialView("_ReviewStarPartial", productVM);
+        }
         public async Task<IActionResult> SearchInput(string key)
         {
             List<Product> products = new List<Product>();

@@ -48,6 +48,16 @@ $(window).scroll(function () {
     }
 });
 
+
+//Blog Side
+
+//let commentForm = document.getElementById("CommentForm");
+
+//commentForm.addEventListener("submit", function (ev) {
+//    ev.preventDefault();
+//    console.log("Test");
+//})
+
 // to top function
 document.querySelector(".topBtn").addEventListener("click", function () {
     window.scrollTo({

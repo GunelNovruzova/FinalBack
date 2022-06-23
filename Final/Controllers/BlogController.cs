@@ -75,61 +75,79 @@ namespace Final.Controllers
             };
             return View(blogVM);
         }
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddReview(Review review, int? rid)
+        public async Task<IActionResult> AddReview(int? bid, [FromBody] string message)
         {
             if (!User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("login", "account");
+                return PartialView("_LoginPartial");
             }
-            if (rid == null) return View();
 
+            if (bid == null) return View();
+            Review review = new Review();
             AppUser appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name && !u.IsAdmin);
-
             review.Email = appUser.Email;
             review.Name = appUser.UserName;
-            int bid = (int)rid;
-            if (review.Message == null || review.Email == null || review.Name == null) return RedirectToAction("detail", new { bid });
-            if (review.Star == null || review.Star < 0 || review.Star > 5)
+
+            BlogVM blogVM = new BlogVM()
+            {
+                Blog = await _context.Blogs.FirstOrDefaultAsync(b => b.Id == bid),
+                Blogs = await _context.Blogs.ToListAsync(),
+                Reviews = await _context.Reviews
+               .Where(p => p.BlogId == bid)
+               .OrderByDescending(r => r.CreatedAt)
+               .ToListAsync()
+            };
+
+            if (message == null || message == "" || message.Trim() == null || message.Trim() == "")
+            {
+                return PartialView("_EditCommentPartial", blogVM);
+            }
+
+            review.Message = message.Trim();
+            if (review.Star < 0 || review.Star > 5)
             {
                 review.Star = 1;
             }
-            review.BlogId = (int)rid;
+
+            review.BlogId = (int)bid;
             review.CreatedAt = DateTime.UtcNow.AddHours(4);
             await _context.Reviews.AddAsync(review);
             await _context.SaveChangesAsync();
-            return RedirectToAction("detail", new { bid });
+            blogVM = new BlogVM()
+            {
+                Blog = await _context.Blogs.FirstOrDefaultAsync(b => b.Id == bid),
+                Blogs = await _context.Blogs.ToListAsync(),
+                Reviews = await _context.Reviews
+                .Where(p => p.BlogId == bid)
+                .OrderByDescending(r => r.CreatedAt)
+                .ToListAsync()
+            };
+            return PartialView("_EditCommentPartial", blogVM);
         }
 
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return BadRequest();
-            Review dbReview = await _context.Reviews
-                .Include(r => r.Blog)
+
+            Review review = await _context.Reviews
                 .FirstOrDefaultAsync(r => r.Id == id);
-            if (dbReview == null) return NotFound();
-
-            return View(dbReview);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, Review review)
-        {
-            if (id == null) return BadRequest();
-            Review dbReview = await _context.Reviews.FirstOrDefaultAsync(r => r.Id == id);
-            if (dbReview == null) return NotFound();
-
-            if (review.Id != id) return BadRequest();
-
-            Blog blog = await _context.Blogs.FirstOrDefaultAsync(b => b.Reviews.FirstOrDefault(r => r.Id == id).Id == id);
-
-            dbReview.Message = review.Message;
-            dbReview.UpdatedAt = DateTime.UtcNow.AddHours(4);
-            int bid = blog.Id;
+            if (review == null) return NotFound();
+            review.IsDeleted = true;
+            review.DeletedAt = DateTime.UtcNow.AddHours(4);
             await _context.SaveChangesAsync();
-            return RedirectToAction("detail", new { bid });
+            BlogVM blogVM = new BlogVM()
+            {
+                Blog = await _context.Blogs.FirstOrDefaultAsync(b => b.Id == review.BlogId),
+                Blogs = await _context.Blogs.ToListAsync(),
+                Reviews = await _context.Reviews
+                .Where(p => p.BlogId == review.BlogId)
+                .OrderByDescending(r => r.CreatedAt)
+                .ToListAsync()
+            };
+            return PartialView("_EditCommentPartial", blogVM);
         }
     }
 } 
