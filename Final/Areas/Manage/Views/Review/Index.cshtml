@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Review>
 @{ int count = (ViewBag.PageIndex - 1) * 5; }
 
-<div class="page-wrapper">
+<div class="content-wrapper">
     <form>
         <div class="form-group col-lg-6 m-auto">
             <label>Status</label>
@@ -41,9 +41,9 @@
             <span>Last updated at :</span> <br /><h5 class="comment-author">@review.UpdatedAt</h5> <br />
         </div>
 
-        <p>
+        @*<p>
             <span>For Blog :</span><br /> <h5 class="comment-author">@review.Blog.Title</h5><br />
-        </p>
+        </p>*@
         <p>
             @if (review.Message.Length > 20)
             {

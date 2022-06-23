@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Final.Areas.Manage.Controllers
 {
+    [Area("Manage")]
     public class ReviewController : Controller
     {
         private readonly AppDbContext _context;
@@ -73,6 +74,7 @@ namespace Final.Areas.Manage.Controllers
 
             Review review = await _context.Reviews
                 .Include(r => r.Blog)
+                
                 .FirstOrDefaultAsync(r => r.Id == id);
             if (review == null) return NotFound();
 
