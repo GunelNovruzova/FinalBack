@@ -102,7 +102,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-10">
-                    <a href=""><img src="~/assetsassets/img/logo/@setting.Logo" alt=""></a>
+                    <a href=""><img src="~/assets/img/logo/@setting.Logo" alt=""></a>
                 </div>
                 <div class="col-2">
                     <div class="side-menu">
@@ -117,21 +117,20 @@
     <div class="nav-bar">
         <div class="nav-barinner">
             <div class="box1 d-flex">
-                <img src="~/assetsassets/img/logo/@setting.Logo" alt="">
-
+                <img src="~/assets/img/logo/@setting.Logo" alt="">
             </div>
             <ul>
-                <a href="index.html" class="active-nav-link">
+                <a asp-controller="home" asp-action="index" class="active-nav-link">
                 <li>Home</li></a>
-                <a href="about.html">
+                <a asp-controller="about" asp-action="index">
                 <li>About</li></a>
-                <a href="contact.html">
+                <a asp-controller="contact" asp-action="index">
                 <li>Contact</li></a>
-                <a href="blog.html">
+                <a asp-controller="blog" asp-action="index">
                 <li>Blog</li></a>
-                <a href="shop.html">
+                <a asp-controller="shop" asp-action="index">
                 <li>Shop</li></a>
-                <a href="menu.html">
+                <a asp-controller="menu" asp-action="index">
                 <li>Menu</li></a>
             </ul>
         </div>

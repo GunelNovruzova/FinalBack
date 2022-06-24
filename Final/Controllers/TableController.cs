@@ -30,7 +30,7 @@ namespace Final.Controllers
             };
             return View(tableVM);
         }
-        public async Task<IActionResult> TableReservation(Table table) 
+        public async Task<IActionResult> TableReservation(Table table,string from) 
         {
 
             if (!User.Identity.IsAuthenticated)
@@ -66,7 +66,15 @@ namespace Final.Controllers
             await _context.Tables.AddAsync(table);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("index");
+            if (from=="home")
+            {
+                return RedirectToAction("index", "home");
+            }
+            else
+            {
+                return RedirectToAction("index","table");
+            }
+            
         }
 
     }
