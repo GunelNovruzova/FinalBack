@@ -43,7 +43,8 @@ $(window).scroll(function () {
         });
     } else {
         header.css({
-            'position': 'relative'
+             'position': 'absolute'
+            
         });
     }
 });
@@ -67,7 +68,7 @@ document.querySelector(".topBtn").addEventListener("click", function () {
 })
 function ScrollToTop() {
     let scBtn = document.querySelector(".toTopBtn");
-    if (window.scrollY > 550) {
+    if (window.scrollY > 250) {
         scBtn.style.opacity = "1"
         scBtn.style.visibility = "visible"
     }
