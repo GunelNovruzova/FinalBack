@@ -2,7 +2,17 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+<style>
+    .errors {
+        margin: 2em 0.5em 1em;
+        padding: 0.2em 1em;
+        border: 2px solid #00a0d2;
+        border-color: #ffb900;
+        font-size:27px;
+        display:inline-block;
+        margin-bottom:24px;
+    }
+</style> 
 <section class="about">
     <div class="about-text">
         <h1>Book a Table</h1>
@@ -16,11 +26,12 @@
         <div class="row">
             <div class="col-lg-8 form-text">
                 <h3>Book A Table</h3>
+
+                @await Html.PartialAsync("_TableCreatePartial", Model.Table)
                 @if (TempData.ContainsKey("error"))
                 {
-                    <span>@TempData["error"]</span>
+                    <span class="errors">@TempData["error"]</span>
                 }
-                @await Html.PartialAsync("_TableCreatePartial", Model.Table)
             </div>
             <div class="col-lg-4">
                 <h5>Our Contacts</h5>
@@ -51,7 +62,6 @@
                     </p>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
