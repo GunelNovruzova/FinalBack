@@ -282,10 +282,7 @@ namespace Final.Controllers
 
                         baskets.Add(basket);
                     }
-
-
                 }
-
                 if (baskets.Count > 0)
                 {
                     await _context.Baskets.AddRangeAsync(baskets);

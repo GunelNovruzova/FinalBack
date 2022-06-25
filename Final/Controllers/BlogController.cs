@@ -101,7 +101,7 @@ namespace Final.Controllers
                .ToListAsync()
             };
 
-            if (message == null || message == "" || message.Trim() == null || message.Trim() == "")
+            if (message == null || message == "")
             {
                 return PartialView("_EditCommentPartial", blogVM);
             }
