@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    //slick
     $('.images').slick({
         slidesToShow: 4,
         slidesToScroll: 1,
@@ -29,6 +30,7 @@ $(document).ready(function () {
 		$(".ship-to-different").slideToggle("100");
 	});
 });
+//for header
 $(window).scroll(function () {
     var header = $('.header'),
         scroll = $(window).scrollTop();
@@ -60,6 +62,7 @@ $(window).scroll(function () {
 //})
 
 // to top function
+//btn
 document.querySelector(".topBtn").addEventListener("click", function () {
     window.scrollTo({
         top: 0,

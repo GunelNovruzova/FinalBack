@@ -77,8 +77,8 @@
             </div>
             <div class="col-lg-4 col-sm-12 col-12">
                 <div class="right">
-                    <form action="">
-                        <input type="text" placeholder="Search">
+                    <form method="get" asp-controller="Blog" asp-action="Search">
+                        <input type="text" name="query" placeholder="Search">
                         <button><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                 </div>

@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    //addBasket
     $(document).on("click", ".addtocart", function (e) {
         e.preventDefault();
         let url = $(this).attr("href");
@@ -7,6 +8,7 @@
         })
 
     })
+    //basketcount
     $(document).on("click", ".basketUpdate", function (e) {
         e.preventDefault();
         let url = $(this).attr("href");
@@ -40,6 +42,7 @@
         }).then(data => $(".maincart").html(data))
 
     })
+    //deleteproductformcard
     $(document).on("click", ".deletecard", function (e) {
         e.preventDefault();
 
@@ -51,6 +54,7 @@
             return response.text()
         }).then(data => $(".maincart").html(data))
     })
+    //deleteproductfrombasket
     $(document).on("click", ".deletebasket", function (e) {
         e.preventDefault();
 
@@ -62,7 +66,7 @@
             return response.text()
         }).then(data => $(".forbasket").html(data))
     })
-
+    //search
     $(document).on("keyup", "#searchBtn", function (e) {
         e.preventDefault()
         console.log($(this).val())

@@ -128,26 +128,20 @@ namespace Final.Controllers
             return PartialView("_EditCommentPartial", blogVM);
         }
 
-        public async Task<IActionResult> Delete(int? id)
+  
+        public async Task<IActionResult> Search(string query)
         {
-            if (id == null) return BadRequest();
-
-            Review review = await _context.Reviews
-                .FirstOrDefaultAsync(r => r.Id == id);
-            if (review == null) return NotFound();
-            review.IsDeleted = true;
-            review.DeletedAt = DateTime.UtcNow.AddHours(4);
-            await _context.SaveChangesAsync();
-            BlogVM blogVM = new BlogVM()
+            if (string.IsNullOrWhiteSpace(query))
             {
-                Blog = await _context.Blogs.FirstOrDefaultAsync(b => b.Id == review.BlogId),
-                Blogs = await _context.Blogs.ToListAsync(),
-                Reviews = await _context.Reviews
-                .Where(p => p.BlogId == review.BlogId)
-                .OrderByDescending(r => r.CreatedAt)
-                .ToListAsync()
-            };
-            return PartialView("_EditCommentPartial", blogVM);
+                return RedirectToAction("Index", "Blog");
+            }
+            List<Blog> blogs = await _context.Blogs.Where(p => p.Title.ToLower().Contains(query.ToLower())).ToListAsync();
+            return View(blogs);
+        }
+        public async Task<IActionResult> SearchPartial(string query)
+        {
+            List<Blog> blogs = await _context.Blogs.Where(p => p.Title.ToLower().Contains(query.ToLower())).ToListAsync();
+            return PartialView("_ProductSearchPartial", blogs);
         }
     }
 } 

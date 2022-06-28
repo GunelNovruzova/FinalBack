@@ -217,3 +217,5 @@ C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Areas\Manag
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Setting\Update.cshtml.g.cs
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_TableCreatePartial.cshtml.g.cs
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProductListPartial.cshtml.g.cs
+C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Search.cshtml.g.cs
+C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProductSearchPartial.cshtml.g.cs

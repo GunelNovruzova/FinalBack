@@ -95,17 +95,21 @@
         <div class="row">
             <div class="prpodsCat">
                 <ul class="nav-list">
+
                     @foreach (Category category in ViewBag.Category)
                     {
-                        <li class="nav-item">
-                            <a asp-action="CategoryFilter" asp-controller="Home" asp-route-id="@category.Id" data-id="@category.Id" class="filtercategory">
-                                <img src="~/assets/img/meals/@category.Image" alt="That's an image ">
-                                <p class="animate__animated animate__flash animate__slower animate__infinite infinite red ">
-                                    @category.Name
-                                </p>
-                            </a>
-                        </li>
-                    }
+                        @if (!category.IsDeleted)
+                        {
+                            <li class="nav-item">
+                                <a asp-action="CategoryFilter" asp-controller="Home" asp-route-id="@category.Id" data-id="@category.Id" class="filtercategory">
+                                    <img src="~/assets/img/meals/@category.Image" alt="That's an image ">
+                                    <p class="animate__animated animate__flash animate__slower animate__infinite infinite red ">
+                                        @category.Name
+                                    </p>
+                                </a>
+                            </li>
+                        }
+                     }
                 </ul>
                 <div class="prod">
                     @await Html.PartialAsync("_IndexCategoryPartial", Model.Products)
