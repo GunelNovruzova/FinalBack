@@ -221,7 +221,6 @@
         </div>
     </div>
 </section>
-
 <section class="allreviews">
     <div class="product-info-tab-menu">
         <div class="tab">
@@ -231,9 +230,7 @@
                 Description
             </button>
             <button class="tablinks" onclick="openInfo(event, 'Adittional')">Reviews</button>
-
         </div>
-
         <div id="Description" class="tabcontent">
             <h4>Description</h4>
             <p>@Model.Product.Description</p>
@@ -285,19 +282,21 @@
         <div class="row">
             @foreach (Product product in Model.Products)
             {
-
-                <div class="col-lg-4">
-                    <div class="product-related">
-                        <div class="imgcart">
-                            <a href="shopdetail.html"><img src="~/assets/img/meals/@product.Image" alt=""></a>
-                            <a href="" class="addtocart">Add to cart</a>
+                @if (!product.IsDeleted)
+                {
+                    <div class="col-lg-4">
+                        <div class="product-related">
+                            <div class="imgcart">
+                                <a href="shopdetail.html"><img src="~/assets/img/meals/@product.Image" alt=""></a>
+                                <a href="" class="addtocart">Add to cart</a>
+                            </div>
+                        </div>
+                        <div class="product-text">
+                            <h4>@product.Name</h4>
+                            <span>@product.Price.ToString("F2")₼</span>
                         </div>
                     </div>
-                    <div class="product-text">
-                        <h4>@product.Name</h4>
-                        <span>@product.Price.ToString("F2")₼</span>
-                    </div>
-                </div>
+                }
             }
         </div>
     </div>

@@ -774,7 +774,7 @@ footer .col-lg-4 span {
   }
 
   .nav-bar {
-    display: block;
+    display: none;
     background-color: #030e16;
     color: #b1b5b7;
     position: fixed;
@@ -995,7 +995,7 @@ footer .col-lg-4 span {
     display: none !important;
   }
 
-  .nav-bar {
+/*  .nav-bar {
     display: block;
     background-color: #030e16;
     color: #b1b5b7;
@@ -1070,7 +1070,7 @@ footer .col-lg-4 span {
   }
   .nav-bar ul hr {
     color: #030e16;
-  }
+  }*/
 
   .intro {
     background-size: cover;
@@ -1624,7 +1624,7 @@ footer .col-lg-4 span {
     display: none !important;
   }
 
-  .nav-bar {
+ /* .nav-bar {
     display: block;
     background-color: #030e16;
     color: #b1b5b7;
@@ -1699,7 +1699,7 @@ footer .col-lg-4 span {
   }
   .nav-bar ul hr {
     color: #030e16;
-  }
+  }*/
 
   .register form {
     margin-left: 0 !important;

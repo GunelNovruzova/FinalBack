@@ -1,9 +1,9 @@
 ﻿<section class="about">
     <div class="about-text">
         <h1>About Us</h1>
-        <a href="">Home </a>
+        <a asp-controller="home" asp-action="index">Home </a>
         <i class="fa-solid fa-angle-right"></i>
-        <span>About Us</span>
+        <a asp-controller="about" asp-action="index"> <span>About Us</span></a>
     </div>
 </section>
 <section class="aboutus">
@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-lg-6 col-12">
                 <h5>Fun, Friends, and Food</h5>
-                <i> <h3>For Every Special Occasion, <br> There's Prive Steak Gallery</h3></i>
+                <i><h3>For Every Special Occasion, <br> There's Prive Steak Gallery</h3></i>
                 <ul>
                     <li>Sharkuteri</li>
                     <li>Baklava</li>
@@ -21,8 +21,7 @@
                     <li>Wine bar</li>
                     <li>VIP cabinets</li>
                     <li>Prive Kids Gallery</li>
-
-                </ul>
+               </ul>
             </div>
             <div class="col-lg-6">
                 <div class="aboutimage">
