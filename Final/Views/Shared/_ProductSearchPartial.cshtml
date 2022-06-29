@@ -1,6 +1,8 @@
-﻿@model List<Blog>
+﻿
+@model List<Product>
 
-@foreach (Blog item in Model)
+@foreach (Product item in Model)
 {
-    <li><a id="prod-search-list-link" asp-controller="Blog" asp-action="Search" asp-route-query="@item.Title">@item.Title</a></li>
+    <li><a id="prod-search-list-link" asp-controller="Shop" asp-action="Search" asp-route-query="@item.Name">@item.Name</a></li>
 }
+

@@ -141,7 +141,7 @@ namespace Final.Controllers
         public async Task<IActionResult> SearchPartial(string query)
         {
             List<Blog> blogs = await _context.Blogs.Where(p => p.Title.ToLower().Contains(query.ToLower())).ToListAsync();
-            return PartialView("_ProductSearchPartial", blogs);
+            return PartialView("_BlogSearchPartial", blogs);
         }
     }
 } 
