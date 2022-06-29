@@ -1,5 +1,5 @@
-﻿@model IEnumerable<Review>
-@{ int count = (ViewBag.PageIndex - 1) * 5; }
+﻿@*@model IEnumerable<Review>*@
+@*@{ int count = (ViewBag.PageIndex - 1) * 5; }
 
 <div class="content-wrapper">
     <form>
@@ -41,13 +41,13 @@
             <span>Last updated at :</span> <br /><h5 class="comment-author">@review.UpdatedAt</h5> <br />
         </div>
 
-        
+
         <p>
             @if (review.Message.Length > 20)
             {
 <span>Description :</span><br /> <h5 class="comment-author">@review.Message.ToString().Substring(0, 20)</h5> }
-                    else
-                    {
+else
+{
 
 <span>Description :</span><br /> <h5 class="comment-author">@review.Message</h5>}
         </p>
@@ -59,8 +59,8 @@
         @if (!review.IsDeleted)
         {
 <span class="reply-btn"><a asp-action="delete" asp-controller="review" asp-area="manage" asp-route-id="@review.Id" class="btn">Delete</a></span> }
-                    else
-                    {
+else
+{
 
 <span class="reply-btn"><a asp-action="restore" asp-controller="review" asp-area="manage" asp-route-id="@review.Id" class="btn">Restore</a></span>}
     </div>
@@ -90,8 +90,8 @@
                 </li>
                                 @if (ViewBag.PageIndex == ViewBag.PageCount && ViewBag.PageIndex > 2)
                                 {
-                <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-2)">@(ViewBag.PageIndex-2)</a></li>                }
-                                                <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-1)">@(ViewBag.PageIndex-1)</a></li>            }
+                <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-2)">@(ViewBag.PageIndex-2)</a></li>}
+                                                <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-1)">@(ViewBag.PageIndex-1)</a></li>}
 
             <li class="page-item active"><a class="page-link" asp-action="index" asp-route-page="@ViewBag.PageIndex">@ViewBag.PageIndex</a></li>
 
@@ -101,7 +101,7 @@
 
                 @if (ViewBag.PageIndex == 1 && (ViewBag.PageIndex + 2) < ViewBag.PageCount)
                 {
-<li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex+2)">@(ViewBag.PageIndex+2)</a></li>                }
+<li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex+2)">@(ViewBag.PageIndex+2)</a></li>}
                                 <li class="page-item">
                                     <a class="page-link" asp-route-page="@(ViewBag.PageIndex + 1)" aria-label="Next">
                                         @(">")
@@ -111,9 +111,113 @@
                                                     <a class="page-link" asp-action="index" asp-route-page="@ViewBag.PageCount" aria-label="Next">
                                                         @(">>")
                                                     </a>
-                                                </li>            }
+                                                </li>}
         </ul>
     </nav>
+</div>*@
+
+
+
+
+
+@*user*@
+@model IEnumerable<Review>
+@{ int count = (ViewBag.PageIndex - 1) * 5; }
+
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">CreatedAt</th>
+                                    <th scope="col">UpdatedAt</th>
+                                    
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null && Model.Count() > 0)
+                                {
+                                    foreach (Review review in Model)
+                                    {
+
+
+
+                                        count++;
+                            <tr>
+                                <td>@count</td>
+                                <td>@review.Name</td>
+                                <td>@review.CreatedAt</td>
+                                <td>@review.UpdatedAt</td>
+                               
+
+                                <td>
+                                    <a asp-action="Detail" asp-controller="Review" asp-area="manage" asp-route-id="@review.Id" class="col-lg-12 btn btn-primary">Detail</a>
+
+                                </td>
+                            </tr>
+                                    }
+                                }
+                                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <nav>
+                        <ul class="pagination">
+
+                            @if (ViewBag.PageIndex > 1)
+                            {
+                <li class="page-item">
+                    <a class="page-link" asp-action="index" asp-route-page="1" aria-label="Previous">
+                        @("<<")
+                    </a>
+                </li>
+                                <li class="page-item">
+                                    <a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-1)" aria-label="Previous">
+                                        @("<")
+                                    </a>
+                                </li>
+                                                @if (ViewBag.PageIndex == ViewBag.PageCount && ViewBag.PageIndex > 2)
+                                                {
+                                <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-2)">@(ViewBag.PageIndex-2)</a></li>
+}
+                                                                <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-1)">@(ViewBag.PageIndex-1)</a></li>
+}
+
+                            <li class="page-item active"><a class="page-link" asp-action="index" asp-route-page="@ViewBag.PageIndex">@ViewBag.PageIndex</a></li>
+
+                            @if (ViewBag.PageIndex < ViewBag.PageCount)
+                            {
+                <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex + 1)">@(ViewBag.PageIndex + 1)</a></li>
+
+                                @if (ViewBag.PageIndex == 1 && (ViewBag.PageIndex + 2) < ViewBag.PageCount)
+                                {
+                <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex+2)">@(ViewBag.PageIndex+2)</a></li>
+}
+                                                <li class="page-item">
+                                                    <a class="page-link" asp-route-page="@(ViewBag.PageIndex + 1)" aria-label="Next">
+                                                        @(">")
+                                                    </a>
+                                                </li>
+                                                                <li class="page-item">
+                                                                    <a class="page-link" asp-action="index" asp-route-page="@ViewBag.PageCount" aria-label="Next">
+                                                                        @(">>")
+                                                                    </a>
+                                                                </li>
+}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-
