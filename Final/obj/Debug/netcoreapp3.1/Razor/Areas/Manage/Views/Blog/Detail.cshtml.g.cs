@@ -19,8 +19,15 @@ using Final.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\User\Desktop\PriveFinal\Final\Areas\Manage\Views\_ViewImports.cshtml"
+using Final.ViewModels.Account;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8f818aa73e1f2522b267f611ca506ead6e34d205", @"/Areas/Manage/Views/Blog/Detail.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"97e6be739ebf7749830f92c979e9cd6546f90c76", @"/Areas/Manage/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7df0f9342d9d6aa13e7a5150911526ce8d2c8f09", @"/Areas/Manage/Views/_ViewImports.cshtml")]
     public class Areas_Manage_Views_Blog_Detail : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Blog>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("card-img-top"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -81,7 +88,7 @@ using Final.Models;
                 <div class=""card"" style=""width: 35rem;margin: 0 auto;"">
                     <div class=""text-center"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "8f818aa73e1f2522b267f611ca506ead6e34d2057736", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "8f818aa73e1f2522b267f611ca506ead6e34d2057927", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -163,7 +170,7 @@ AddHtmlAttributeValue("", 621, Model.Image, 621, 12, false);
 #line hidden
 #nullable disable
             WriteLiteral("</p>\n                        </li>\n                    </ul>\n                    <div class=\"card-body\">\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8f818aa73e1f2522b267f611ca506ead6e34d20512241", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8f818aa73e1f2522b267f611ca506ead6e34d20512432", async() => {
                 WriteLiteral("Update");
             }
             );
@@ -208,7 +215,7 @@ AddHtmlAttributeValue("", 621, Model.Image, 621, 12, false);
 #line hidden
 #nullable disable
             WriteLiteral("                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8f818aa73e1f2522b267f611ca506ead6e34d20515209", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8f818aa73e1f2522b267f611ca506ead6e34d20515400", async() => {
                 WriteLiteral("Restore");
             }
             );
@@ -254,7 +261,7 @@ AddHtmlAttributeValue("", 621, Model.Image, 621, 12, false);
 #line hidden
 #nullable disable
             WriteLiteral("                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8f818aa73e1f2522b267f611ca506ead6e34d20518286", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8f818aa73e1f2522b267f611ca506ead6e34d20518477", async() => {
                 WriteLiteral("Delete");
             }
             );
@@ -297,7 +304,7 @@ AddHtmlAttributeValue("", 621, Model.Image, 621, 12, false);
 #line hidden
 #nullable disable
             WriteLiteral("                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8f818aa73e1f2522b267f611ca506ead6e34d20521291", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8f818aa73e1f2522b267f611ca506ead6e34d20521482", async() => {
                 WriteLiteral("Go to Blogs list");
             }
             );

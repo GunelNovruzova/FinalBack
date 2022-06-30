@@ -19,8 +19,15 @@ using Final.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\User\Desktop\PriveFinal\Final\Areas\Manage\Views\_ViewImports.cshtml"
+using Final.ViewModels.Account;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1a36aae35d7b49f009dafcc1d4b2a8b32fd009e0", @"/Areas/Manage/Views/Review/Detail.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"97e6be739ebf7749830f92c979e9cd6546f90c76", @"/Areas/Manage/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7df0f9342d9d6aa13e7a5150911526ce8d2c8f09", @"/Areas/Manage/Views/_ViewImports.cshtml")]
     public class Areas_Manage_Views_Review_Detail : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Review>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "edit", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -96,7 +103,7 @@ using Final.Models;
 #line hidden
 #nullable disable
             WriteLiteral("</h5>\n                </p>\n            </div>\n            <div class=\"comment-body text-end\" style=\"flex-basis: 0;display:inline-block;\">\n                <span class=\"reply-btn\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1a36aae35d7b49f009dafcc1d4b2a8b32fd009e07892", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1a36aae35d7b49f009dafcc1d4b2a8b32fd009e08083", async() => {
                 WriteLiteral("Change");
             }
             );
@@ -142,7 +149,7 @@ using Final.Models;
 #line hidden
 #nullable disable
             WriteLiteral("    <span class=\"reply-btn\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1a36aae35d7b49f009dafcc1d4b2a8b32fd009e011079", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1a36aae35d7b49f009dafcc1d4b2a8b32fd009e011270", async() => {
                 WriteLiteral("Delete");
             }
             );
@@ -190,7 +197,7 @@ using Final.Models;
 #line hidden
 #nullable disable
             WriteLiteral("    <span class=\"reply-btn\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1a36aae35d7b49f009dafcc1d4b2a8b32fd009e014297", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1a36aae35d7b49f009dafcc1d4b2a8b32fd009e014488", async() => {
                 WriteLiteral("Restore");
             }
             );
@@ -235,7 +242,7 @@ using Final.Models;
 #line hidden
 #nullable disable
             WriteLiteral("            </div>\n        </li>\n    </ul>\n\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1a36aae35d7b49f009dafcc1d4b2a8b32fd009e017499", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1a36aae35d7b49f009dafcc1d4b2a8b32fd009e017690", async() => {
                 WriteLiteral("Go to Reviews List");
             }
             );

@@ -17878,9 +17878,8 @@ header .booktable {
         top: 33%;
         bottom: 0;
         left: 0;
-        width: 98% !important;
         z-index: 99999;
-        width: 90%;
+        width: 40% !important;
     }
 
         .nav-bar .nav-barinner {
@@ -17889,11 +17888,11 @@ header .booktable {
             text-align: center;
             flex-direction: column;
             position: fixed;
-            left: 50%;
-            top: 38%;
-            transform: translateX(-50%);
-            z-index: 99999;
-            width: 82%;
+            left: 21% !important;
+            top: 38% !important;
+            transform: translateX(-50%) !important;
+            z-index: 99999 !important;
+            width: 40% !important;
         }
 
             .nav-bar .nav-barinner ul {
@@ -17965,7 +17964,7 @@ header .booktable {
     }
 
         .intro h1 {
-            font-size: 30px;
+            font-size: 15px;
             margin-top: 0;
         }
 
@@ -18011,6 +18010,7 @@ header .booktable {
 
         .team .col-lg-4 .ceo img {
             margin-top: 60px !important;
+            width:200px;
         }
 
         .team .col-lg-4 .ceo .member-info {
@@ -18018,9 +18018,10 @@ header .booktable {
             color: #ffffff;
             padding: 10px 60px;
             position: absolute;
-            left: 24%;
-            bottom: -30px;
+            left: 20%;
+            bottom: -34px;
             transition: 0.4s;
+            width: 62%;
         }
 
             .team .col-lg-4 .ceo .member-info:hover {
@@ -18043,8 +18044,10 @@ header .booktable {
     .video .vid {
         width: 95%;
     }
-
-    .booking img {
+    .booking{
+        display:none;
+    }
+    /*.booking img {
         width: 300px;
         margin-top: 80px;
     }
@@ -18061,7 +18064,7 @@ header .booktable {
 
     .booking .col-lg-6 {
         text-align: center;
-    }
+    }*/
 
     footer .footer-text a::before {
         left: 10%;
@@ -18071,6 +18074,9 @@ header .booktable {
     footer .footer-text a::after {
         right: 10%;
         width: 6%;
+    }
+    .map{
+        display:none;
     }
 }
 
@@ -18134,7 +18140,7 @@ header .booktable {
         top: 33%;
         bottom: 0;
         left: 0;
-        width: 100% !important;
+        width: 40% !important;
         z-index: 99999;
         width: 90%;
     }
@@ -18145,11 +18151,11 @@ header .booktable {
             text-align: center;
             flex-direction: column;
             position: fixed;
-            left: 50%;
-            top: 38%;
-            transform: translateX(-50%);
-            z-index: 99999;
-            width: 82%;
+            left: 21% !important;
+            top: 38% !important;
+            transform: translateX(-50%) !important;
+            z-index: 99999 !important;
+            width: 40% !important;
         }
 
             .nav-bar .nav-barinner ul {

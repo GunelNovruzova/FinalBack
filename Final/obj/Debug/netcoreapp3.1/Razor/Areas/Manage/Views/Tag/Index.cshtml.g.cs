@@ -19,8 +19,15 @@ using Final.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\User\Desktop\PriveFinal\Final\Areas\Manage\Views\_ViewImports.cshtml"
+using Final.ViewModels.Account;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"473d16418e183e2ddf592af2b2563d8778d011f5", @"/Areas/Manage/Views/Tag/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"97e6be739ebf7749830f92c979e9cd6546f90c76", @"/Areas/Manage/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7df0f9342d9d6aa13e7a5150911526ce8d2c8f09", @"/Areas/Manage/Views/_ViewImports.cshtml")]
     public class Areas_Manage_Views_Tag_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<Tag>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("value", "false", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -84,7 +91,7 @@ using Final.Models;
             </div>
             <div class=""col-lg-8 h3 mb-4 text-gray-800"">
                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f59026", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f59217", async() => {
                 WriteLiteral("\r\n                    <div class=\"form-group\">\r\n                        <label>Status</label>\r\n                        <select class=\"form-control\" name=\"status\">\r\n");
 #nullable restore
 #line 17 "C:\Users\User\Desktop\PriveFinal\Final\Areas\Manage\Views\Tag\Index.cshtml"
@@ -95,7 +102,7 @@ using Final.Models;
 #line hidden
 #nullable disable
                 WriteLiteral("                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f59770", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f59961", async() => {
                     WriteLiteral("All");
                 }
                 );
@@ -112,7 +119,7 @@ using Final.Models;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f511136", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f511327", async() => {
                     WriteLiteral("Active");
                 }
                 );
@@ -128,7 +135,7 @@ using Final.Models;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f512392", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f512583", async() => {
                     WriteLiteral("DeActive");
                 }
                 );
@@ -154,7 +161,7 @@ using Final.Models;
 #line hidden
 #nullable disable
                 WriteLiteral("                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f513965", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f514156", async() => {
                     WriteLiteral("All");
                 }
                 );
@@ -168,7 +175,7 @@ using Final.Models;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f515009", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f515200", async() => {
                     WriteLiteral("Active");
                 }
                 );
@@ -184,7 +191,7 @@ using Final.Models;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f516265", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f516456", async() => {
                     WriteLiteral("DeActive");
                 }
                 );
@@ -213,7 +220,7 @@ using Final.Models;
 #line hidden
 #nullable disable
                 WriteLiteral("                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f518133", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f518324", async() => {
                     WriteLiteral("All");
                 }
                 );
@@ -227,7 +234,7 @@ using Final.Models;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f519177", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f519368", async() => {
                     WriteLiteral("Active");
                 }
                 );
@@ -246,7 +253,7 @@ using Final.Models;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f520756", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f520947", async() => {
                     WriteLiteral("DeActive");
                 }
                 );
@@ -284,7 +291,7 @@ using Final.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n            </div>\r\n            <div class=\"col-lg-2 h3 mb-4 text-gray-800\">\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f523449", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f523640", async() => {
                 WriteLiteral("Create");
             }
             );
@@ -322,7 +329,7 @@ using Final.Models;
 #line hidden
 #nullable disable
             WriteLiteral("                            <li class=\"page-item\">\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f526159", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f526350", async() => {
                 WriteLiteral("\r\n                                    ");
 #nullable restore
 #line 60 "C:\Users\User\Desktop\PriveFinal\Final\Areas\Manage\Views\Tag\Index.cshtml"
@@ -369,7 +376,7 @@ using Final.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                            </li>\r\n                            <li class=\"page-item\">\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f529478", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f529669", async() => {
                 WriteLiteral("\r\n                                    ");
 #nullable restore
 #line 65 "C:\Users\User\Desktop\PriveFinal\Final\Areas\Manage\Views\Tag\Index.cshtml"
@@ -430,7 +437,7 @@ using Final.Models;
 #line hidden
 #nullable disable
             WriteLiteral("                                <li class=\"page-item\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f533350", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f533541", async() => {
 #nullable restore
 #line 70 "C:\Users\User\Desktop\PriveFinal\Final\Areas\Manage\Views\Tag\Index.cshtml"
                                                                                                                                                                      Write(ViewBag.PageIndex-2);
@@ -487,7 +494,7 @@ using Final.Models;
 #line hidden
 #nullable disable
             WriteLiteral("                            <li class=\"page-item\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f537032", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f537223", async() => {
 #nullable restore
 #line 72 "C:\Users\User\Desktop\PriveFinal\Final\Areas\Manage\Views\Tag\Index.cshtml"
                                                                                                                                                                  Write(ViewBag.PageIndex-1);
@@ -544,7 +551,7 @@ using Final.Models;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n                        <li class=\"page-item active\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f540705", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f540896", async() => {
 #nullable restore
 #line 75 "C:\Users\User\Desktop\PriveFinal\Final\Areas\Manage\Views\Tag\Index.cshtml"
                                                                                                                                                                Write(ViewBag.PageIndex);
@@ -602,7 +609,7 @@ using Final.Models;
 #line hidden
 #nullable disable
             WriteLiteral("                            <li class=\"page-item\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f544443", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f544634", async() => {
 #nullable restore
 #line 79 "C:\Users\User\Desktop\PriveFinal\Final\Areas\Manage\Views\Tag\Index.cshtml"
                                                                                                                                                                    Write(ViewBag.PageIndex + 1);
@@ -660,7 +667,7 @@ using Final.Models;
 #line hidden
 #nullable disable
             WriteLiteral("                                <li class=\"page-item\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f548228", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f548419", async() => {
 #nullable restore
 #line 82 "C:\Users\User\Desktop\PriveFinal\Final\Areas\Manage\Views\Tag\Index.cshtml"
                                                                                                                                                                      Write(ViewBag.PageIndex+2);
@@ -717,7 +724,7 @@ using Final.Models;
 #line hidden
 #nullable disable
             WriteLiteral("                            <li class=\"page-item\">\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f551946", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f552137", async() => {
                 WriteLiteral("\r\n                                    ");
 #nullable restore
 #line 86 "C:\Users\User\Desktop\PriveFinal\Final\Areas\Manage\Views\Tag\Index.cshtml"
@@ -767,7 +774,7 @@ using Final.Models;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                            </li>\r\n                            <li class=\"page-item\">\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f555296", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f555487", async() => {
                 WriteLiteral("\r\n                                    ");
 #nullable restore
 #line 91 "C:\Users\User\Desktop\PriveFinal\Final\Areas\Manage\Views\Tag\Index.cshtml"
@@ -829,7 +836,7 @@ using Final.Models;
             WriteLiteral("                    </ul>\r\n                </nav>\r\n            </div>\r\n        </div>\r\n</div>\r\n    </div>\r\n");
             DefineSection("Script", async() => {
                 WriteLiteral("\r\n            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f559213", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f559404", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -843,7 +850,7 @@ using Final.Models;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f560322", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "473d16418e183e2ddf592af2b2563d8778d011f560513", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -873,7 +880,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ScriptTagHelper.AppendVersion = true;
             WriteLiteral("\r\n");
             DefineSection("Style", async() => {
                 WriteLiteral("\r\n            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "473d16418e183e2ddf592af2b2563d8778d011f562502", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "473d16418e183e2ddf592af2b2563d8778d011f562693", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
