@@ -79,7 +79,6 @@ C:\Users\User\Desktop\PriveFinal\Final\bin\Debug\netcoreapp3.1\ru\Microsoft.Code
 C:\Users\User\Desktop\PriveFinal\Final\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\User\Desktop\PriveFinal\Final\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\User\Desktop\PriveFinal\Final\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Final.csproj.AssemblyReference.cache
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Final.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Final.AssemblyInfoInputs.cache
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Final.AssemblyInfo.cs

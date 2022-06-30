@@ -21,49 +21,4 @@
     <Folder Include="wwwroot\assets\img\salads\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="wwwroot\assets\css\about.css.map" />
-    <None Include="wwwroot\assets\css\about.scss" />
-    <None Include="wwwroot\assets\css\account.css.map" />
-    <None Include="wwwroot\assets\css\account.scss" />
-    <None Include="wwwroot\assets\css\blog.css.map" />
-    <None Include="wwwroot\assets\css\blog.scss" />
-    <None Include="wwwroot\assets\css\blogdetail.css.map" />
-    <None Include="wwwroot\assets\css\blogdetail.scss" />
-    <None Include="wwwroot\assets\css\burger.css.map" />
-    <None Include="wwwroot\assets\css\burger.scss" />
-    <None Include="wwwroot\assets\css\cart.css.map" />
-    <None Include="wwwroot\assets\css\cart.scss" />
-    <None Include="wwwroot\assets\css\checkout.css.map" />
-    <None Include="wwwroot\assets\css\checkout.scss" />
-    <None Include="wwwroot\assets\css\contact.css.map" />
-    <None Include="wwwroot\assets\css\contact.scss" />
-    <None Include="wwwroot\assets\css\dessers.css.map" />
-    <None Include="wwwroot\assets\css\dessers.scss" />
-    <None Include="wwwroot\assets\css\dryaged.css.map" />
-    <None Include="wwwroot\assets\css\dryaged.scss" />
-    <None Include="wwwroot\assets\css\grilledmeats.css.map" />
-    <None Include="wwwroot\assets\css\grilledmeats.scss" />
-    <None Include="wwwroot\assets\css\hotsnack.css.map" />
-    <None Include="wwwroot\assets\css\hotsnack.scss" />
-    <None Include="wwwroot\assets\css\login.css.map" />
-    <None Include="wwwroot\assets\css\login.scss" />
-    <None Include="wwwroot\assets\css\menu.css.map" />
-    <None Include="wwwroot\assets\css\menu.scss" />
-    <None Include="wwwroot\assets\css\register.css.map" />
-    <None Include="wwwroot\assets\css\register.scss" />
-    <None Include="wwwroot\assets\css\salad.css.map" />
-    <None Include="wwwroot\assets\css\salad.scss" />
-    <None Include="wwwroot\assets\css\shop.css.map" />
-    <None Include="wwwroot\assets\css\shop.scss" />
-    <None Include="wwwroot\assets\css\shopdetail.css.map" />
-    <None Include="wwwroot\assets\css\shopdetail.scss" />
-    <None Include="wwwroot\assets\css\snack.css.map" />
-    <None Include="wwwroot\assets\css\snack.scss" />
-    <None Include="wwwroot\assets\css\style.css.map" />
-    <None Include="wwwroot\assets\css\style.scss" />
-    <None Include="wwwroot\assets\css\table.css.map" />
-    <None Include="wwwroot\assets\css\table.scss" />
-  </ItemGroup>
-
 </Project>
