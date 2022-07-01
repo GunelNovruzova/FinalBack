@@ -17888,11 +17888,11 @@ header .booktable {
             text-align: center;
             flex-direction: column;
             position: fixed;
-            left: 21% !important;
             top: 38% !important;
             transform: translateX(-50%) !important;
             z-index: 99999 !important;
-            width: 40% !important;
+            width: 60% !important;
+            left: 47% !important;
         }
 
             .nav-bar .nav-barinner ul {
@@ -18004,45 +18004,15 @@ header .booktable {
         height: 117px !important;
     }
 
-    .team .col-lg-4 {
-        text-align: center;
+    .team {
+        display:none;
     }
 
-        .team .col-lg-4 .ceo img {
-            margin-top: 60px !important;
-            width:200px;
-        }
 
-        .team .col-lg-4 .ceo .member-info {
-            background-color: #090C0F;
-            color: #ffffff;
-            padding: 10px 60px;
-            position: absolute;
-            left: 20%;
-            bottom: -34px;
-            transition: 0.4s;
-            width: 62%;
-        }
+    
 
-            .team .col-lg-4 .ceo .member-info:hover {
-                transform: translateY(-10px);
-                background-color: #B25E26;
-            }
-
-                .team .col-lg-4 .ceo .member-info:hover p {
-                    color: #030e16;
-                }
-
-                .team .col-lg-4 .ceo .member-info:hover h4 {
-                    color: #030e16;
-                }
-
-            .team .col-lg-4 .ceo .member-info p {
-                color: #c19977;
-            }
-
-    .video .vid {
-        width: 95%;
+    .video  {
+        display:none;
     }
     .booking{
         display:none;
@@ -18077,6 +18047,31 @@ header .booktable {
     }
     .map{
         display:none;
+    }
+    .forsearch{
+        display:none !important;
+    }
+    .forbasket{
+        display:none;
+    }
+    .imagebox{
+        display:none;
+    }
+    .blog {
+        background-position: center center;
+        background-size: cover;
+    }
+
+    .aboutblogs .generalblog .blogimage {
+        width: 284px;
+    }
+
+        .aboutblogs .generalblog .blogimage img {
+            width: 284px;
+        }
+
+    .aboutblogs .generalblog .blogcontent {
+        width: 70%;
     }
 }
 
@@ -18151,11 +18146,11 @@ header .booktable {
             text-align: center;
             flex-direction: column;
             position: fixed;
-            left: 21% !important;
             top: 38% !important;
             transform: translateX(-50%) !important;
             z-index: 99999 !important;
             width: 40% !important;
+            left: 50% !important;
         }
 
             .nav-bar .nav-barinner ul {
@@ -18273,6 +18268,25 @@ header .booktable {
     .team .allteam .ceo img {
         width: 300px !important;
     }
+    .about {
+        background-position: center center;
+        background-size: cover;
+    }
+
+    .mission .imagebox  {
+        display:none;
+    }
+
+    .mission h3 {
+        margin-left: 170px;
+        display: none;
+    }
+
+    .mission h5 {
+        margin-left: 120px;
+        font-size: 18px;
+        display: none;
+    }
 
     #navmenu {
         display: none;
@@ -18286,5 +18300,28 @@ header .booktable {
     footer .footer-text a::after {
         right: 10%;
         width: 6%;
+    }
+    .forsearch {
+        display: none !important;
+    }
+    .map{
+        display:none;
+    }
+    .aboutblogs .generalblog .blogimage img {
+        width: 516px;
+        height: 353px;
+        transition: 0.4s;
+    }
+
+  
+    .aboutblogs .blog-tags {
+        width: 80%;
+        background: #041b26;
+        padding: 25px;
+        margin-top: 40px;
+        height: 475px !important;
+    }
+    .gallery{
+        display:none !important;
     }
 }

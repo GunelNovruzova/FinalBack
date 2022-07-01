@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-lg-6">
             <ul id="search-ul" style="position: absolute; left: 1%; background-color: #041821; width: 100%; z-index: 99; top: -13%" class=" mt-3 list-group">
-                @foreach (Product product in Model.Take(6))
+                @foreach (Product product in Model)
                 {
                    @if (!product.IsDeleted)
                     {

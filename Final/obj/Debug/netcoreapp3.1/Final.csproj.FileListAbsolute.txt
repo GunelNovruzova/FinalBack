@@ -220,5 +220,4 @@ C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Blog\
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_BlogSearchPartial.cshtml.g.cs
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProductSearchPartial.cshtml.g.cs
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shop\Search.cshtml.g.cs
-C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Final.csproj.AssemblyReference.cache
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Account\Login.cshtml.g.cs
