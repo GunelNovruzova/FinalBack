@@ -6,6 +6,14 @@
         let url = $(this).attr("href");
         fetch(url).then(response => response.text()).then(data => {
             $(".forbasket").html(data);
+            var closebasket = document.querySelector(".closebasket");
+            closebasket.addEventListener("click", function (e) {
+                e.preventDefault();
+                var basketfor = document.querySelector(".forbasket");
+                basketfor.style.visibility = "hidden";
+                basketfor.style.right = "-100%";
+                basketfor.style.opacity = "0";
+            })
         })
 
     })

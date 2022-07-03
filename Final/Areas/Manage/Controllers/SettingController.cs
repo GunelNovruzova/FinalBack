@@ -36,7 +36,7 @@ namespace Final.Areas.Manage.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(int? id, Setting setting)
+        public async Task<IActionResult> Update(int? id, Setting setting, bool? status, int page = 1)
         {
             if (id == null) return BadRequest();
             Setting dbSetting = await _context.Settings.FirstOrDefaultAsync(s => s.Id == id);
@@ -69,8 +69,7 @@ namespace Final.Areas.Manage.Controllers
             dbSetting.ContactUsDescription = setting.ContactUsDescription;
             dbSetting.UpdatedAt = DateTime.UtcNow.AddHours(4);
             await _context.SaveChangesAsync();
-
-            return RedirectToAction("index");
+            return RedirectToAction("index", new { status, page });
         }
 
     }

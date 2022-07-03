@@ -23,8 +23,9 @@ namespace Final.Controllers
         {
             HomeVM homeVM = new HomeVM {
                 Products = await _context.Products.Where(p => !p.IsDeleted).ToListAsync(),
-                Teams = await _context.Teams.Where(p => !p.IsDeleted).ToListAsync()
-              //Tables = await _context.Tables.FirstOrDefaultAsync()
+                Teams = await _context.Teams.Where(p => !p.IsDeleted).ToListAsync(),
+                HomeIntros = await _context.HomeIntros.Where(p => !p.IsDeleted).ToListAsync()
+                //Tables = await _context.Tables.FirstOrDefaultAsync()
 
             };
             ViewBag.Category = await _context.Categories.Where(p=>p.Image != null).ToListAsync();

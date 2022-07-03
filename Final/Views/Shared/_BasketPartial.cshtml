@@ -14,7 +14,7 @@
                 <p>@basketVM.Name</p>
                 <h6>@basketVM.Count × <span>@basketVM.Price₼</span></h6>
             </div>
-            <a  asp-controller="Basket" asp-action="DeleteBasket" asp-route-id="@basketVM.ProductId" class="deletebasket"><i class="fa-solid fa-xmark"></i></a>
+            <a  asp-controller="Basket" asp-action="DeleteBasket" asp-route-id="@basketVM.ProductId" class="deletebasket"><i class="fa-solid fa-square-xmark"></i></a>
         </div> 
     }
     <h6>Subtotal: <span>@subtotal₼</span></h6>

@@ -1,4 +1,5 @@
-﻿<section class="about">
+﻿@model AboutVM
+<section class="about">
     <div class="about-text">
         <h1>About Us</h1>
         <a asp-controller="home" asp-action="index">Home </a>
@@ -12,31 +13,29 @@
             <div class="col-lg-6 col-12">
                 <h5>Fun, Friends, and Food</h5>
                 <i><h3>For Every Special Occasion, <br> There's Prive Steak Gallery</h3></i>
-                <ul>
-                    <li>Sharkuteri</li>
-                    <li>Baklava</li>
-                    <li>Butcher</li>
-                    <li>Meza Gallery</li>
-                    <li>Dry Aged</li>
-                    <li>Wine bar</li>
-                    <li>VIP cabinets</li>
-                    <li>Prive Kids Gallery</li>
-               </ul>
+                @foreach (AboutIntro about in Model.AboutIntros)
+                {
+                    <ul>
+                        <li>@about.Feature</li>
+
+                    </ul>
+                }
+
             </div>
-            <div class="col-lg-6">
-                <div class="aboutimage">
+            
+                <div class="col-lg-6">
+                    <div class="aboutimage">
+                        @foreach (AboutIntro about in Model.AboutIntros)
+                        {
+                            <img src="/assets/img/interier/@about.Image" alt="">
 
-                    <img src="/assets/img/background/cabinet2.jpg" alt="">
-                    <img src="/assets/img/background/singing.jpeg" alt="">
-                    <img src="/assets/img/interier/_0010021.jpg" alt="">
-                    <img src="/assets/img/background/looking.jpg" alt="">
-                    <img src="/assets/img/interier/sing2.jpeg" alt="">
-                    <img src="/assets/img/interier/_MRN1178.jpg" alt="">
-                    <img src="/assets/img/interier/sing.jpg" alt="">
 
+
+                        }
+                    </div>
+                    <!-- <img src="/assets/img/interier/prive-steak-gallery.jpg" alt=""> -->
                 </div>
-                <!-- <img src="/assets/img/interier/prive-steak-gallery.jpg" alt=""> -->
-            </div>
+
         </div>
     </div>
 </section>
@@ -51,7 +50,10 @@
             </div>
             <div class="col-lg-6 col-md-5">
                 <h3>Our Mission</h3>
-                <h5>We are here to choose products with special care to create the clean, fresh and delicious blessings that are always worthy of your mouth, to be friendly to customers by serving them to the highest standards and to add color and flavor to the most special moments of their lives!</h5>
+                @foreach (Mission mission in Model.Missions)
+                {
+                    <h5>@Html.Raw(mission.MissionText)</h5>
+                }
             </div>
         </div>
     </div>
@@ -63,10 +65,14 @@
         <div class="row">
             <div class="col-lg-12 col-12">
                 <h3>Our Vision</h3>
-                <span>
-                    "
-                    To be the first family holiday restaurant  in the center  <br>  that our customers constantly  recommend and visit, <br> presenting the perfect  delicacies that our palate longs <br> for with our  friendly, hospitable team, while maintaining <br> our principle of quality service, which always prioritizes <br> customer satisfaction!"
-                </span>
+                @foreach (Vision vision in Model.Visions)
+                {
+                    <span>
+                        "
+                        @Html.Raw(vision.VisionText)
+                        "
+                    </span>
+                }
             </div>
         </div>
     </div>

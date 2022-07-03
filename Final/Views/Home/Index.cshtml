@@ -8,11 +8,14 @@
          data-aos-easing="ease-in-sine" class="all">
         <div class="container">
             <div class="row">
+                @foreach (HomeIntro home in Model.HomeIntros)
+                {
                 <div class="col-lg-6 col-12 col-md-6">
-                    <i><h6>Welcome to Our Restaurant</h6></i>
-                    <h1>The Best Food For <br> The Best Moments</h1>
-                    <h5>We have created for you the Prive Steak Gallery, <br> which presents the most delicious meat and <br> hosts your sincere conversations.</h5>
+                    <i><h6>@home.Intro</h6></i>
+                    <h1>@Html.Raw(home.Title)</h1>
+                    <h5>@Html.Raw(home.Description)</h5>
                 </div>
+                }
             </div>
         </div>
         <img src="~/assets/img/details/certified.png" alt="">

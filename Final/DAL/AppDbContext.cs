@@ -26,6 +26,10 @@ namespace Final.DAL
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Table> Tables { get; set; }
+        public DbSet<HomeIntro> HomeIntros { get; set; }
+        public DbSet<AboutIntro> AboutIntros { get; set; }
+        public DbSet<Mission> Missions { get; set; }
+        public DbSet<Vision> Visions { get; set; }
 
 
     }
