@@ -17817,6 +17817,12 @@ header .booktable {
     .nav-bar {
         display: none;
     }
+.shop-detail .product-text {
+    background-color: #041b26;
+    text-align: center;
+    width: 90% !important;
+    height:27% !important;
+}
 
 @media (max-width: 576px) {
     #phoneheader {

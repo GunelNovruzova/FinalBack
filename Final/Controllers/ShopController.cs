@@ -105,5 +105,17 @@ namespace Final.Controllers
             List<Product> products = await _context.Products.Where(p => p.Name.ToLower().Contains(query.ToLower())).ToListAsync();
             return PartialView("_ProductSearchPartial", products);
         }
+        public async Task<IActionResult> CategoryFilter(int? id)
+        {
+            List<Product> product = await _context.Products.Where(p => p.CategoryId == id && !p.IsDeleted).Take(6).ToListAsync();
+
+            return PartialView("_ShopCategoryPartial", product);
+        }
+        public async Task<IActionResult> TagFilter(int? id)
+        {
+            List<Product> product = await _context.Products.Include(p=> p.ProductTags).ThenInclude(pt => pt.Tag)
+                 .Where(p => p.ProductTags.Any(t => t.Tag.Id == id)).Take(6).ToListAsync();
+            return PartialView("_ShopCategoryPartial", product);
+        }
     }
 }

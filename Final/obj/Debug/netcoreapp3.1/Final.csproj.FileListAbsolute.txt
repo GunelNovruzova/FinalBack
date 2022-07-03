@@ -239,3 +239,5 @@ C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Areas\Manag
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Mission\Update.cshtml.g.cs
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Vision\Index.cshtml.g.cs
 C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Vision\Create.cshtml.g.cs
+C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ShopCategoryPartial.cshtml.g.cs
+C:\Users\User\Desktop\PriveFinal\Final\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_TagCategoryPartial.cshtml.g.cs

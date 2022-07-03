@@ -46,6 +46,7 @@
                 right: 0;
                 opacity: 1;
             }
+
     .shop .shop-text i {
         color: #fff;
         margin-left: 6px;
@@ -78,8 +79,8 @@
 
 
                     <form id="shopFilter" name="shopFilter">
-                        <input type="hidden" name="cid" value="@ViewBag.cid"/>
-                        <input type="hidden" name="tid" value="@ViewBag.tid"/>
+                        <input type="hidden" name="cid" value="@ViewBag.cid" />
+                        <input type="hidden" name="tid" value="@ViewBag.tid" />
                         <select id="shopFilter" name="sortby" onchange="form.submit()">
                             <option value="">Sort by Relevance</option>
                             <option value="AZ">Name (A-Z)</option>
@@ -90,70 +91,56 @@
                     </form>
                 </div>
                 <div class="row">
-                    @foreach (Product product in Model.Products)
-                    {
-                        <div class="col-lg-6 col-12">
-                            <div class="product-detail">
-                                <div class="imgcart">
-                                    <a asp-action="detail" asp-controller="shop" asp-route-pid="@product.Id"><img src="~/assets/img/meals/@product.Image" alt=""></a>
-                                    <a asp-controller="Product" asp-action="AddBasket" asp-route-id="@product.Id" class="addtocart">Add to cart</a>
-                                </div>
-                            </div>
-                            <div class="product-text">
-                                <h4>@product.Name</h4>
-                                <span>@product.Price₼</span>
-                                <br>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                       </div>
-                      }
+                    <div class="allprod">
+                        @await Html.PartialAsync("_ShopCategoryPartial", Model.Products)
+                    </div>
                 </div>
                 <div class="blog-pagination">
                     <ul class="justify-content-center">
                         @if (ViewBag.PageIndex > 1)
                         {
-                    <li class="page-item">
-                        <a class="page-link" asp-action="index" asp-route-page="1"  asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid" aria-label="Previous">
-                            @("<<")
-                        </a>
-                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-1)"  asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid" aria-label="Previous">
-                                            @("<")
-                                        </a>
-                                    </li>
-                                                    @if (ViewBag.PageIndex == ViewBag.PageCount && ViewBag.PageIndex > 2)
-                                                    {
-                                    <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-2)"  asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@(ViewBag.PageIndex-2) </a></li>}
-                                                                    <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-1)"  asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@(ViewBag.PageIndex-1)</a></li>}
+                            <li class="page-item">
+                                <a class="page-link" asp-action="index" asp-route-page="1" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid" aria-label="Previous">
+                                    @("<<")
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-1)" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid" aria-label="Previous">
+                                    @("<")
+                                </a>
+                            </li>
+                            @if (ViewBag.PageIndex == ViewBag.PageCount && ViewBag.PageIndex > 2)
+                            {
+                                <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-2)" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@(ViewBag.PageIndex-2) </a></li>
+}
+                            <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-1)" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@(ViewBag.PageIndex-1)</a></li>
+}
 
-                        <li class="page-item"><a class="page-link" style="background: #030E16; color: white;" asp-action="index" asp-route-page="@ViewBag.PageIndex"  asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@ViewBag.PageIndex</a></li>
+                        <li class="page-item"><a class="page-link" style="background: #030E16; color: white;" asp-action="index" asp-route-page="@ViewBag.PageIndex" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@ViewBag.PageIndex</a></li>
 
                         @if (ViewBag.PageIndex < ViewBag.PageCount)
                         {
-                    <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex + 1)"  asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@(ViewBag.PageIndex + 1)</a></li>
+                            <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex + 1)" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@(ViewBag.PageIndex + 1)</a></li>
 
-                                    @if (ViewBag.PageIndex == 1 && (ViewBag.PageIndex + 2) < ViewBag.PageCount)
-                                    {
-                    <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex+2)"  asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@(ViewBag.PageIndex+2)</a></li>}
-                                                    <li class="page-item">
-                                                        <a class="page-link" asp-route-page="@(ViewBag.PageIndex + 1)"  asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid" aria-label="Next">
-                                                            @(">")
-                                                        </a>
-                                                    </li>
-                                                                    <li class="page-item">
-                                                                        <a class="page-link" asp-action="index" asp-route-page="@ViewBag.PageCount"  asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid" aria-label="Next">
-                                                                            @(">>")
-                                                                        </a>
-                                                                    </li>}
+                            @if (ViewBag.PageIndex == 1 && (ViewBag.PageIndex + 2) < ViewBag.PageCount)
+                            {
+                                <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex+2)" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@(ViewBag.PageIndex+2)</a></li>
+}
+                            <li class="page-item">
+                                <a class="page-link" asp-route-page="@(ViewBag.PageIndex + 1)" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid" aria-label="Next">
+                                    @(">")
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" asp-action="index" asp-route-page="@ViewBag.PageCount" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid" aria-label="Next">
+                                    @(">>")
+                                </a>
+                            </li>
+}
 
                     </ul>
                 </div>
-            </div> 
+            </div>
             <div class="col-lg-4 col-12">
                 <div class="right">
                     <form method="get" asp-controller="Shop" asp-action="Search">
@@ -166,7 +153,7 @@
                     <ul>
                         @foreach (Category category in Model.Categories)
                         {
-                            <li><a asp-action="Index" asp-route-cid="@category.Id">@category.Name</a></li>
+                            <li><a asp-action="CategoryFilter" asp-controller="Shop" asp-route-id="@category.Id" data-id="@category.Id" class="filtercategory">@category.Name</a></li>
                         }
 
                     </ul>
@@ -174,11 +161,11 @@
                 <div class="shop-tags">
                     <h3>Tags</h3>
                     <div class="tags-name">
-                    
-                        
+
+
                         @foreach (Tag tag in Model.Tags)
                         {
-                            <a asp-action="Index" asp-route-tid="@tag.Id" >@tag.Name</a>
+                            <a asp-action="TagFilter" asp-controller="Shop" asp-route-id="@tag.Id" data-id="@tag.Id" class="filtercategory">@tag.Name</a>
                         }
 
                     </div>
@@ -239,4 +226,31 @@
         </div>
     </div>
 </section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".filtercategory").click(function (e) {
+            e.preventDefault();
+            var id = $(this).attr("data-id");
+            console.log(id)
+            fetch("Shop/CategoryFilter" + "?id=" + id).then(res => {
+                return res.text()
+            }).then(data => {
+                $(".allprod").html(data);
+            })
+        })
+    })
+    $(document).ready(function () {
+        $(".filtercategory").click(function (e) {
+            e.preventDefault();
+            var id = $(this).attr("data-id");
+            console.log(id)
+            fetch("Shop/TagFilter" + "?id=" + id).then(res => {
+                return res.text()
+            }).then(data => {
+                $(".allprod").html(data);
+            })
+        })
+    })
+</script>
 
