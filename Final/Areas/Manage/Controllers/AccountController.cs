@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 namespace Final.Areas.Manage.Controllers
 {
     [Area("Manage")]
+
     public class AccountController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

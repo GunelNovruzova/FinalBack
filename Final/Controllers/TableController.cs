@@ -36,6 +36,10 @@ namespace Final.Controllers
             {
                 return RedirectToAction("login", "account");
             }
+            //if (!User.Identity.IsAuthenticated)
+            //{
+            //    return Json(0);
+            //}
             AppUser appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name && !u.IsAdmin);
             if (string.IsNullOrWhiteSpace(table.Name))
             {
@@ -49,13 +53,19 @@ namespace Final.Controllers
             }
             if (await _context.Tables.AnyAsync(t=>t.Date>=table.Date.AddHours(-1)&&t.Date<=table.Date.AddHours(1)))
             {
-                ModelState.AddModelError("", "Yerimiz doludu qardas :D duz deyir");
-                TempData["error"] = "Yerimiz doludu qardas :D duz deyir";
+                ModelState.AddModelError("", "This table has already been reserved.");
+                TempData["error"] = "This table has already been reserved.";
             }
+            else
+            {
+                TempData["success"] = "Your reservation has been registered";
+            }
+           
             table.MainEmail = appUser.Email; 
             table.CreatedAt = DateTime.UtcNow.AddHours(4);
             await _context.Tables.AddAsync(table);
             await _context.SaveChangesAsync();
+           
             if (from=="home")
             {
                 return RedirectToAction("index", "home");
@@ -64,6 +74,6 @@ namespace Final.Controllers
             {
                 return RedirectToAction("index","table");
             }  
-        }
+        } 
     }
 }

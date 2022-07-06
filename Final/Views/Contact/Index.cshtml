@@ -16,7 +16,10 @@
         <div class="row">
             <div class="col-lg-6 col-md-5  col-sm-5 form-text">
                 <h3>Contact Us</h3>
-                @await Html.PartialAsync("_ContatctCreatePartial", Model.Contact) 
+                <div class="contact-form">
+                    @await Html.PartialAsync("_ContatctCreatePartial", Model.Contact)
+                </div>
+                <p class="message" style="opacity:0;">Your message has been sent!</p>
             </div>
             <div class="col-lg-6 col-md-7 col-sm-7">
                 <h5>Our Contacts</h5>
@@ -37,7 +40,7 @@
                         <br>
                         @Model.Setting.Phone
                     </p>
-                </div>
+                </div> 
                 <div class="contactdetails">
                     <i class="fa-solid fa-at"></i>
                     <p>

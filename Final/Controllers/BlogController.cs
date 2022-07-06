@@ -80,9 +80,13 @@ namespace Final.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddReview(int? bid, [FromBody] string message)
         {
+            //if (!User.Identity.IsAuthenticated)
+            //{
+            //    return PartialView("_LoginPartial");
+            //}
             if (!User.Identity.IsAuthenticated)
             {
-                return PartialView("_LoginPartial");
+                return Json(0);
             }
 
             if (bid == null) return View();
@@ -142,6 +146,18 @@ namespace Final.Controllers
         {
             List<Blog> blogs = await _context.Blogs.Where(p => p.Title.ToLower().Contains(query.ToLower())).ToListAsync();
             return PartialView("_BlogSearchPartial", blogs);
+        }
+        public async Task<IActionResult> CategoryFilter(int? id)
+        {
+            List<Blog> blog = await _context.Blogs.Where(p => p.CategoryId == id && !p.IsDeleted).Take(6).ToListAsync();
+
+            return PartialView("_BlogCategoryPartial", blog);
+        }
+        public async Task<IActionResult> TagFilter(int? id)
+        {
+            List<Blog> blog = await _context.Blogs.Include(p => p.BlogTags).ThenInclude(pt => pt.Tag)
+                 .Where(p => p.BlogTags.Any(t => t.Tag.Id == id)).Take(6).ToListAsync();
+            return PartialView("_BlogCategoryPartial", blog);
         }
     }
 } 

@@ -142,7 +142,11 @@
         }).then(res => {
             return res.text();
         }).then(data => {
-            console.log(data);
+         /*   console.log(data);*/
+            if (data == 0) {
+                window.location = window.location.origin + "/Account/Login";
+                return;
+            }
             $(".blogreview").append(data);
            
         })

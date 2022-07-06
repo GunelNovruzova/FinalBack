@@ -165,7 +165,7 @@
 
                         @foreach (Tag tag in Model.Tags)
                         {
-                            <a asp-action="TagFilter" asp-controller="Shop" asp-route-id="@tag.Id" data-id="@tag.Id" class="filtercategory">@tag.Name</a>
+                            <a asp-action="TagFilter" asp-controller="Shop" asp-route-id="@tag.Id" data-id="@tag.Id" class="filtertag">@tag.Name</a>
                         }
 
                     </div>
@@ -241,7 +241,7 @@
         })
     })
     $(document).ready(function () {
-        $(".filtercategory").click(function (e) {
+        $(".filtertag").click(function (e) {
             e.preventDefault();
             var id = $(this).attr("data-id");
             console.log(id)

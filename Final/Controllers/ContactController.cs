@@ -33,35 +33,48 @@ namespace Final.Controllers
             return View(contactVM);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ContactMessage(Contact contact)
+        public async Task<IActionResult> ContactMessage(string Message,string Email, string Name,string Phone)
         {
-            
+
+            //if (!User.Identity.IsAuthenticated)
+            //{
+            //    return RedirectToAction("login", "account");
+            //}
             if (!User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("login", "account");
+                return Json(0);
             }
-
 
             AppUser appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name && !u.IsAdmin);
+            Contact contact = new Contact()
+            {
+                Email = Email,
+                Message = Message,
+                Phone = Phone,
+                Name = Name
+            };
 
-
-            if (string.IsNullOrWhiteSpace(contact.Name))
+            if (string.IsNullOrWhiteSpace(Name))
             {
                 ModelState.AddModelError("Name", "There should be no gaps");
-                return View();
+                //return RedirectToAction("index", "contact");
+
+                return PartialView("_ContatctCreatePartial",contact);
             }
 
-            if (string.IsNullOrWhiteSpace(contact.Message))
+            if (string.IsNullOrWhiteSpace(Message))
             {
                 ModelState.AddModelError("Message", "There should be no gaps");
-                return View();
+                //return RedirectToAction("index", "contact");
+
+                return PartialView("_ContatctCreatePartial",contact);
             }
-            if (string.IsNullOrWhiteSpace(contact.Email))
+            if (string.IsNullOrWhiteSpace(Email))
             {
                 ModelState.AddModelError("Email", "There should be no gaps");
-                return View();
+                //return RedirectToAction("index", "contact");
+
+                return PartialView("_ContatctCreatePartial", contact);
             }
             contact.MainEmail = appUser.Email;
 
@@ -70,7 +83,7 @@ namespace Final.Controllers
             await _context.Contacts.AddAsync(contact);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("index");
+            return PartialView("_ContatctCreatePartial");
         }
     }
 }

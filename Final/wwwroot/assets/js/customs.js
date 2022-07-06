@@ -86,4 +86,69 @@
             $("#productList").html(data)
         })
     })
+    var MessageAction = function () {
+        $(".message").css({
+            "opacity": "0",
+            "visibility": "hidden"
+        })
+    }
+    $(document).on("click", ".resyyyy", function (e) {
+        e.preventDefault();
+        $(".message").css({
+            "opacity": "1"
+        })
+        setTimeout(MessageAction, 3000);
+
+        let mess = $(".CMessage").val();
+        let email = $(".CEmail").val();
+        let name = $(".CName").val();
+        let phone = $(".CPhone").val();
+        //var id = $(this).attr("data-id");
+        //console.log(id)
+        fetch("Contact/ContactMessage" + "?Message=" + mess + " &Email=" + email + "&Name=" + name + "&Phone=" + phone).then(res => {
+            return res.text()
+          
+        }).then(data => {
+            if (data == 0) {
+                window.location = window.location.origin + "/Account/Login";
+                return;
+            }
+            $(".contact-form").html(data);
+        })
+    })
+  
+    //var TableAction = function () {
+    //    $(".success").css({
+    //        "opacity": "0",
+    //        "visibility": "hidden"
+    //    })
+    //}
+    //$(document).on("click", ".res", function (e) {
+    //    e.preventDefault();
+    //    $(".success").css({
+    //        "opacity": "1"
+    //    })
+    //    setTimeout(MessageAction, 3000);
+    //    let name = $(".CName").val();
+    //    let reserve = $(".reserve").val();
+    //    let date = $(".CDate").val();
+    //    let phone = $(".CPhone").val();
+    //    let email = $(".CEmail").val();
+       
+     
+    //    //var id = $(this).attr("data-id");
+    //    //console.log(id)
+    //    fetch("Table/TableReservation" + "?Name=" + name + "&Reserve=" + reserve + "&Date=" + date +  "&Phone=" + phone + "&Email=" + email).then(res => {
+    //        return res.text()
+
+    //    }).then(data => {
+    //        if (data == 0) {
+    //            window.location = window.location.origin + "/Account/Login";
+    //            return;
+    //        }
+    //        $(".tableform").html(data);
+    //    })
+    //})
 })
+ 
+   

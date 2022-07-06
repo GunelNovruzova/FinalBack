@@ -294,10 +294,10 @@ namespace Final.Controllers
         }
         public async Task<IActionResult> Logout()
         {
-            AppUser appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name.ToUpper() && !u.IsAdmin);
-            List<Basket> existedBasket = await _context.Baskets.Where(b => b.AppUserId == appUser.Id).ToListAsync();
-            _context.RemoveRange(existedBasket);
-            await _context.SaveChangesAsync();
+            //AppUser appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name.ToUpper() && !u.IsAdmin);
+            //List<Basket> existedBasket = await _context.Baskets.Where(b => b.AppUserId == appUser.Id).ToListAsync();
+            //_context.RemoveRange(existedBasket);
+            //await _context.SaveChangesAsync();
             await _signInManager.SignOutAsync();
             return RedirectToAction("index", "home");
         }
@@ -333,15 +333,17 @@ namespace Final.Controllers
         }
 
         #region Create Role
-        public async Task<IActionResult> CreateRole()
-        {
-            await _roleManager.CreateAsync(new IdentityRole { Name = "SuperAdmin" });
-            await _roleManager.CreateAsync(new IdentityRole { Name = "Admin" });
-            await _roleManager.CreateAsync(new IdentityRole { Name = "Member" });
+        //public async Task<IActionResult> CreateRole()
+        //{
+        //    await _roleManager.CreateAsync(new IdentityRole { Name = "SuperAdmin" });
+        //    await _roleManager.CreateAsync(new IdentityRole { Name = "Admin" });
+        //    await _roleManager.CreateAsync(new IdentityRole { Name = "Member" });
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
 
+
+        #endregion
         [HttpPost]
         public async Task<IActionResult> Edit(MemberUpdateVM member)
         {
@@ -421,6 +423,5 @@ namespace Final.Controllers
 
             return RedirectToAction("Profile");
         }
-        #endregion
     }
 }
