@@ -72,11 +72,11 @@
 <section class="blog">
     <div class="blog-text">
         <h1>Blog</h1>
-        <a href="">Home </a>
+        <a asp-controller="Home" asp-action="Index">Home </a>
         <i class="fa-solid fa-angle-right"></i>
-        <a href="blog.html">Blog</a>
+        <a asp-controller="Blog" asp-action="Index">Blog</a>
         <i class="fa-solid fa-angle-right"></i>
-        <span>Stuffed Lamb with Spinach and Pine Nuts Recipe</span>
+        <span>@Model.Blog.Title</span>
     </div>
 </section>
 <section class="blog-detail">

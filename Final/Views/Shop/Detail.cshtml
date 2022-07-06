@@ -186,9 +186,9 @@
 <section class="shop">
     <div class="shop-text">
         <h1>Shop</h1>
-        <a href="">Home</a>
-        <i class="fa-solid fa-angle-right"></i>
-        <span>Products</span>
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <i class="fa-solid fa-angle-right" style="font-size:17px; margin-left:5px; margin-right:5px;"></i>
+        <a asp-controller="Shop" asp-action="Index"><span>Products</span></a>
     </div>
 </section>
 <section class="product-detail" style="margin:0px">
@@ -280,18 +280,18 @@
     <h3>Related Products</h3>
     <div class="container">
         <div class="row">
-            @foreach (Product product in Model.Products)
+            @foreach (Product product in Model.Products.Take(3))
             {
                 @if (!product.IsDeleted)
                 {
                     <div class="col-lg-4">
                         <div class="product-related">
                             <div class="imgcart">
-                                <a href="shopdetail.html"><img src="~/assets/img/meals/@product.Image" alt=""></a>
+                                <a asp-controller="Shop" asp-action="Detail"><img src="~/assets/img/meals/@product.Image" alt=""></a>
                                 <a href="" class="addtocart">Add to cart</a>
                             </div>
                         </div>
-                        <div class="product-text">
+                        <div class="product-text" style="height:120px;">
                             <h4>@product.Name</h4>
                             <span>@product.Price.ToString("F2")₼</span>
                         </div>

@@ -24,7 +24,7 @@
             </div>
             
                 <div class="col-lg-6">
-                    <div class="aboutimage">
+                    <div class="aboutimage" style="margin-top:99px;">
                         @foreach (AboutIntro about in Model.AboutIntros)
                         {
                             <img src="/assets/img/interier/@about.Image" alt="">
@@ -78,39 +78,4 @@
     </div>
 
 
-</section>
-<section class="booking">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 form-text">
-                <h3>Book A Table</h3>
-                <form action="">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <input type="text" placeholder="Name">
-                                <input type="text" placeholder="Person">
-                                <br>
-                                <input type="time" placeholder="01.00am">
-                            </div>
-                            <div class="col-lg-6">
-                                <input type="number" placeholder="Phone">
-                                <input type="email" placeholder="Email ID">
-
-                                <input type="date" placeholder="mm/dd/yy">
-                            </div>
-                            <div class="col-lg-12">
-                                <button type="submit">Book Now</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-            <div class="col-lg-6">
-                <img src="/assets/img/interier/_54A5232.jpg" alt="">
-            </div>
-
-        </div>
-    </div>
 </section>

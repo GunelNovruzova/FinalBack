@@ -62,9 +62,9 @@
 <section class="shop">
     <div class="shop-text">
         <h1>Shop</h1>
-        <a href="">Home </a>
+        <a asp-controller="Home" asp-action="Index">Home </a>
         <i class="fa-solid fa-angle-right"></i>
-        <span>Shop</span>
+        <a asp-controller="Shop" asp-action="Index"><span>Shop</span></a>
     </div>
 </section>
 
@@ -96,7 +96,8 @@
                     </div>
                 </div>
                 <div class="blog-pagination">
-                    <ul class="justify-content-center">
+                    
+                    <ul class="justify-content-center" style="padding-top: 47px;">
                         @if (ViewBag.PageIndex > 1)
                         {
                             <li class="page-item">
@@ -112,9 +113,9 @@
                             @if (ViewBag.PageIndex == ViewBag.PageCount && ViewBag.PageIndex > 2)
                             {
                                 <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-2)" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@(ViewBag.PageIndex-2) </a></li>
-}
+                            }
                             <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex-1)" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@(ViewBag.PageIndex-1)</a></li>
-}
+                        }
 
                         <li class="page-item"><a class="page-link" style="background: #030E16; color: white;" asp-action="index" asp-route-page="@ViewBag.PageIndex" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@ViewBag.PageIndex</a></li>
 
@@ -125,7 +126,7 @@
                             @if (ViewBag.PageIndex == 1 && (ViewBag.PageIndex + 2) < ViewBag.PageCount)
                             {
                                 <li class="page-item"><a class="page-link" asp-action="index" asp-route-page="@(ViewBag.PageIndex+2)" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid">@(ViewBag.PageIndex+2)</a></li>
-}
+                            }
                             <li class="page-item">
                                 <a class="page-link" asp-route-page="@(ViewBag.PageIndex + 1)" asp-route-cid="@ViewBag.cid" asp-route-tid="@ViewBag.tid" aria-label="Next">
                                     @(">")
@@ -136,7 +137,7 @@
                                     @(">>")
                                 </a>
                             </li>
-}
+                        }
 
                     </ul>
                 </div>
@@ -179,13 +180,13 @@
                             <h6>Stuffed Lamb with Spinach and Pine Nuts Recipe</h6>
                             <p>$11</p>
 
-                            <div class="icons">
+                            @*<div class="icons">
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
-                            </div>
+                            </div>*@
                         </div>
 
                     </div>
