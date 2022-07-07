@@ -37,5 +37,6 @@ namespace Final.Areas.Manage
             if (appUser == null) return NotFound();
             return View(appUser);
         }
+       
     }
 }

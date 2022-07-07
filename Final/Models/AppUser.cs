@@ -11,6 +11,7 @@ namespace Final.Models
     {
         [StringLength(255)]
         public string FullName { get; set; }
+       
         public bool IsAdmin { get; set; }
         public string Address { get; set; }
         [StringLength(255)]
